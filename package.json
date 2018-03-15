@@ -1,0 +1,20 @@
+{
+  "name": "show-me-the-money",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smalldoorman/show-me-the-money.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smalldoorman/show-me-the-money/issues"
+  },
+  "homepage": "https://github.com/smalldoorman/show-me-the-money#readme"
+}
