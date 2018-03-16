@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/smalldoorman/show-me-the-money/issues"
   },
-  "homepage": "https://github.com/smalldoorman/show-me-the-money#readme"
+  "homepage": "https://github.com/smalldoorman/show-me-the-money#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.37.1"
+  }
 }
