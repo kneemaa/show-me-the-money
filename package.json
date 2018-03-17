@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/smalldoorman/show-me-the-money#readme",
   "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-jwt": "^5.3.1",
+    "express-jwt-authz": "^1.0.0",
+    "jwks-rsa": "^1.2.1",
     "mysql2": "^1.5.2",
     "sequelize": "^4.37.1"
   }
