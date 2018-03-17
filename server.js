@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require('cors')
+const exphbs = require('express-handlebars')
 const db = require("./models")
 require('dotenv').config()
 
@@ -14,7 +15,9 @@ if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
-app.use(express.static("public"))
+//app.use(express.static("public"))
+app.engine("handlebars", exphbs({ defaultLayout: "nema-temp"}))
+app.set("view engine", "handlebars")
 app.use(cors());
 //routes here
 /*const routes = require('./routes/index')
@@ -22,6 +25,7 @@ const user = require('./routes/user')*/
 
 
 require("./routes/auth-api-routes")(app)
+require("./routes/routes")(app)
 
 app.use( (error, request, response, next) => {
 	console.error(error.stack)
