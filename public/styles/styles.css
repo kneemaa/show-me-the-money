@@ -1,0 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+
+body {
+  font-family: 'Open Sans', arial, sans-serif;
+  font-size: 15px;
+}
+
+/* table */
+table { font-size: 13px;}
+table .small.button { margin-bottom: 0;}
+table thead th { font-weight: 600;}
+
+/* adjust table padding */
+table tbody td, table thead th {
+  padding: .5rem;
+  text-align: center;
+}
+
+#chart {
+  width: 100%;
+  height: 400px;
+}
