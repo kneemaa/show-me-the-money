@@ -73,7 +73,7 @@
           <td>%</td>
           <td>
             <a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
-            <a class="btn btn-indigo btn-custom-small" href="#0">Trade</a>
+            <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
           </td>
         </tr>
         <tr>
@@ -86,19 +86,93 @@
             <td>%</td>
             <td>
               <a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
-              <a class="btn btn-indigo btn-custom-small" href="#0">Trade</a>
+              <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
             </td>
-          </tr>
-        </tbody>
-      </table>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- form -->
+    <form id="trade" class="mb-5">
+      <div class="form-row d-flex align-items-end">
+        <div class="col">
+          <label for="stock" class="company">Symbol</label>
+          <input type="text" class="form-control" name="stock" placeholder="Stock">
+        </div>
+        <div class="col">
+          <label for="price" class="company">Price $</label>
+          <input type="text" class="form-control" name="price" placeholder="Price $">
+        </div>
+        <div class="col">
+          <label for="action" class="company">Action</label>
+          <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="Buy/Sell">
+          <div class="dropdown-menu col">
+            <a class="dropdown-item" href="#">Buy</a>
+            <a class="dropdown-item" href="#">Sell</a>
+            <a class="dropdown-item" href="#">Something else</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <div class="col">
+          <label for="qty" class="company">QTY</label>
+          <input type="text" class="form-control" name="qty" placeholder="QTY">
+        </div>
+        <div class="col">
+          <label for="total" class="company">Total</label>
+          <input type="text" class="form-control" name="total" placeholder="Total $">
+        </div>
+        <div class="col">
+          <a class="btn btn-indigo btn-custom-small" href="#0">Confirm</a>
+        </div>
+      </div>
+    </form>
 
   <!-- chart -->
   <div id="chart"></div>
 
-  <!-- Portfolio -->
+  <!-- portfolio -->
   <div id="portfolio"></div>
 
-  <!--Footer-->
+  <!-- suggested stocks -->
+  <div class="container text-center">
+    <div class="suggested">
+      <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+      <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+      <div>
+        <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+        <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+      </div>
+    </div>
+
+    <div class="suggested">
+      <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+      <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-up"></i></p>
+      <div>
+        <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+        <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+      </div>
+    </div>
+    <div class="suggested">
+      <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+      <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+      <div>
+        <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+        <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+      </div>
+    </div>
+
+    <div class="suggested">
+      <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+      <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-up"></i></p>
+      <div>
+        <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+        <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+      </div>
+    </div>
+  </div>
+
+  <!--footer-->
   <footer class="page-footer font-small pt-4 mt-4">
     <div class="container text-md-left">
       <div class="row">
