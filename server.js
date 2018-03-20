@@ -15,9 +15,10 @@ const PORT = process.env.PORT || 4000
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
-//app.use(express.static("public"))
-app.engine("handlebars", exphbs({ defaultLayout: "nema-temp"}))
+// app.use(express.static("public"))
+app.engine("handlebars", exphbs({ defaultLayout: "main"}))
 app.set("view engine", "handlebars")
+
 app.use(cors());
 //routes here
 /*const routes = require('./routes/index')
