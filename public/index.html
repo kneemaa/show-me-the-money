@@ -1,90 +1,150 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Stock</title>
   <link rel="shortcut icon" href="images/favicon.png">
 
-  <!-- Foundation compressed CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
-  <!-- Custom css -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+  <!-- custom css -->
   <link rel="stylesheet" href="styles/styles.css">
-
 </head>
-<body>
-  <!-- navigation -->
-  <header>
-    <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle></button>
-      <div class="title-bar-title">Site Title</div>
-    </div>
 
-    <div class="top-bar" id="nav-menu">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li><a href="#">Site Title</a></li>
-          <li><input type="search" placeholder="Search Stock"></li>
-          <li><button type="button" class="button">Search</button></li>
+<body>
+  <!-- header nav -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#"><strong>Site Name</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="menubar">
+        <form class="form-inline md-form form-sm">
+          <a href="#"><i class="fa fa-search white-text mr-3" aria-hidden="true"></i></a>
+          <input class="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search">
+        </form>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Trade Center</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
         </ul>
       </div>
-      <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li><a href="#">Trade Center</a></li>
-          <li><a href="#">My Portfolio</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-      </div>
-    </div>
+    </nav>
   </header>
 
   <!-- table -->
-  <table class="hover unstriped">
+  <table class="table table-hover mt-5 text-center">
     <thead>
       <tr>
-        <th>Symbol</th>
-        <th>Last Price $</th>
+        <th class="text-left">Symbol<br><span class="company">Company</span></th>
         <th>QTY</th>
+        <th>Last Price $</th>
         <th>Price Paid $</th>
+        <th>Market Value $</th>
         <th>Total Gain $</th>
-        <th>Value $</th>
-        <th></th>
+        <th>Profit/Loss %</th>
+        <td>Action</td>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>APPL</td>
-        <td>0.00</td>
-        <td>10</td>
-        <td>0.00</td>
-        <td>0.00</td>
-        <td>0.00</td>
-        <td><a class="small button chart-btn" href="#0">Chart</a></td>
-      </tr>
-      <tr>
-        <td>APPL</td>
-        <td>0.00</td>
-        <td>10</td>
-        <td>0.00</td>
-        <td>0.00</td>
-        <td>0.00</td>
-        <td><a class="small button chart-btn" href="#0">Chart</a></td>
-      </tr>
-    </tbody>
-  </table>
+        <td class="text-left">WFC<br><span class="company">Wells Fargo<span></td>
+          <td>10</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>%</td>
+          <td>
+            <a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
+            <a class="btn btn-indigo btn-custom-small" href="#0">Trade</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left">NKE<br><span class="company">Nike Inc.<span></td>
+            <td>20</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>%</td>
+            <td>
+              <a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
+              <a class="btn btn-indigo btn-custom-small" href="#0">Trade</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-<!-- chart -->
-<div id="chart"></div>
+  <!-- chart -->
+  <div id="chart"></div>
 
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <!-- Foundation compressed JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+  <!-- Portfolio -->
+  <div id="portfolio"></div>
+
+  <!--Footer-->
+  <footer class="page-footer font-small pt-4 mt-4">
+    <div class="container text-md-left">
+      <div class="row">
+        <div class="col-md-8">
+          <h5>Site Name</h5>
+          <p class="pr-5">Lorem ipsum dolor sit amet, mandamus consequuntur pri at, augue tollit accommodare duo at. In posse semper quo, brute munere mnesarchum ad his. Oportere consulatu qui eu. Ad modus porro mundi per. </p>
+        </div>
+        <div class="col-md-4">
+          <h5>References</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">MDBootstrap</a>
+            </li>
+            <li>
+              <a href="#!">eCharts</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-12 pb-4">
+          <hr style="background-color:grey">
+          <a href="https://github.com/smalldoorman/show-me-the-money">Github Repository</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
   <!-- Data visualization echarts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.4/echarts-en.common.min.js"></script>
+
   <!-- Custom JavaScript -->
   <script src="javascript/app.js"></script>
-  <script src="javascript/chart.js"></script>
+  <script src="javascript/bar-chart.js"></script>
+  <script src="javascript/pie-chart.js"></script>
 </body>
 </html>
