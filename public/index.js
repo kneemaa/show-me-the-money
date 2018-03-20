@@ -1,10 +1,10 @@
 $(document).ready(function(){
-
+console.log("bananas")
 
     // Make connection
     // this 'socket' is a separate frontend socket variable
     // and not connected to the one in server on the backend
-    var socket = io('http://localhost:3000');
+    var socket = io('http://localhost:4000');
 
     var userID = faker.random.uuid
     var stocks = ['snap', 'aig', 'fb', 'aapl', 'amzn', 'abt', 'ach', 'mdc', 'mfa'];
@@ -16,7 +16,7 @@ $(document).ready(function(){
         id: userID,
         stocks: userStocks
     }
-
+    console.log(user);
     // receives "broadcast" emit from server containing the top 10 data
     socket.on("broadcast", function(data){
         console.log(data);

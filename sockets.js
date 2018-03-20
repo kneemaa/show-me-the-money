@@ -1,20 +1,18 @@
 
-// const server = require("./server.js");
 const socket = require("socket.io");
 
 const server = require("./server.js")
-console.log(server);
+console.log("server " + server);
 // socket setup, this connects the server to the clients
 
 const io = socket(server);
-// broadcast IEX socket
+// all clients IEX socket
 const IEXsocket = require('socket.io-client')('https://ws-api.iextrading.com/1.0/tops')
 
+module.exports = app => {
 // listens for a "connection" event, and runs the callback with 
 // the socket paramater. This establishes a socet connection btween
 // the server and THAT specific client
-
-module.exports = app => {
 io.on("connection", function(socket){
     console.log("Made socket connection ", + socket.id);
 
@@ -85,8 +83,7 @@ IEXsocket.on('connect', () => {
 // Subscribe to topics (i.e. appl,fb,aig+)
 IEXsocket.emit('subscribe', 'snap,fb,aig')
 
-// Unsubscribe from topics (i.e. aig+)
-//   IEXsocket.emit('unsubscribe', 'aig+')
+
 })
 
 // Disconnect from the channel
