@@ -1,11 +1,11 @@
 
 const socket = require("socket.io");
 
-const server = require("./server.js")
-console.log("server " + server);
+const io = require("./server.js")
+console.log(io);
 // socket setup, this connects the server to the clients
 
-const io = socket(server);
+// const io = server;
 // all clients IEX socket
 const IEXsocket = require('socket.io-client')('https://ws-api.iextrading.com/1.0/tops')
 
