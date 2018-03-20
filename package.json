@@ -26,6 +26,7 @@
     "express-jwt-authz": "^1.0.0",
     "jwks-rsa": "^1.2.1",
     "mysql2": "^1.5.2",
-    "sequelize": "^4.37.1"
+    "sequelize": "^4.37.1",
+    "socket.io": "^2.0.4"
   }
 }

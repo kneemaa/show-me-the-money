@@ -9,9 +9,9 @@ const app = express()
 
 const PORT = process.env.PORT || 3000
 
-if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
-  throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file';
-}
+// if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
+//   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file';
+// }
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
@@ -26,14 +26,20 @@ const user = require('./routes/user')*/
 
 require("./routes/auth-api-routes")(app)
 require("./routes/routes")(app)
+require("./sockets")(app);
 
 app.use( (error, request, response, next) => {
 	console.error(error.stack)
 	return response.status(error.status).json({ message: error.message })
 })
 
-db.sequelize.sync({ force: false }).then( () => {
-	app.listen(PORT, () => {
+
+
+ db.sequelize.sync({ force: false }).then( () => {
+		app.listen(PORT, () => {
 		console.log("App listening on PORT: " + PORT)
 	})
+
+	
 })
+ 
