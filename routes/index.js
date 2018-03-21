@@ -41,6 +41,13 @@ router.get('/callback',
   }
 );
 
+router.get('/user', ensureLoggedIn, function(req, res, next) {
+  res.json({
+    user: req.user ,
+    userProfile: JSON.stringify(req.user, null, '  ')
+  });
+});
+
 
 router.get('/failure', function(req, res) {
   var error = req.flash("error");
