@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn()
+const flash = require('connect-flash')
 
 const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
@@ -31,7 +32,7 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.get( '/callback',
+router.get('/callback',
   passport.authenticate('auth0', {
     failureRedirect: '/failure'
   }),
@@ -39,10 +40,6 @@ router.get( '/callback',
     res.redirect(req.session.returnTo || '/user');
   }
 );
-
-router.get('/user', ensureLoggedIn, (req, res, next) => {
-  res.json({Message: "hi", User: req.user})
-})
 
 
 router.get('/failure', function(req, res) {

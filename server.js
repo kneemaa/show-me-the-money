@@ -6,8 +6,8 @@ const db = require("./models")
 require('dotenv').config()
 //const ensureLoggedIn = require('connect-ensure-login');
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
-const flash = require('connect-flash')
-const passport = require('passport');
+const passport = require('passport')
+const session = require('express-session')
 const Auth0Strategy = require('passport-auth0');
 const router = express.Router();
 
@@ -41,20 +41,28 @@ passport.deserializeUser(function(user, done) {
 	done(null, user)
 })
 
-app.use(passport.initialize())
-app.use(passport.session())
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
-app.use(cookieParser());
-//app.use(express.static("public"))
+app.use(cookieParser())
+app.use(
+  session({
+    secret: 'shhhhhhhhh',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize())
+app.use(passport.session())
 app.engine("handlebars", exphbs({ defaultLayout: "nema-temp"}))
 app.set("view engine", "handlebars")
 
 
+const user = require('./routes/user')
 const routes = require('./routes/index')
 
-app.use(routes)
+app.use('/', routes)
+app.use('/user', user)
 
 
 //const routes = require('./routes/auth-routes')

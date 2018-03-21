@@ -28,6 +28,7 @@
     "express-handlebars": "^3.0.0",
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^1.0.0",
+    "express-session": "^1.15.6",
     "jwks-rsa": "^1.2.1",
     "mysql2": "^1.5.2",
     "passport": "^0.4.0",
