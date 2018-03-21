@@ -2,6 +2,7 @@ function handleLogIn(userEmail)
     // Ajax get for user with userEmail
     // if no user (res) then call createNewUser()
     // if user returned update dom with userInfo (name and money)
+    // push stocks to portfolio[]
     // then call updatePortfolio(stocks)
 
 function createNewUser()
@@ -22,7 +23,7 @@ function buyStock()
     // Ajax call to return current price of the stock
     // do math to remove total cost from user money
     // update DOM
-    // call updatePortfolio
+    // call updatePortfolio()
     
 
 function sellStock()
@@ -30,5 +31,14 @@ function sellStock()
     // Ajax call to return the current price of the stock
     // do math to add revenue back to user money 
     // update DOM
-    // call  updatePortfolio
+    // call  updatePortfolio()
+
+
+module.exports = {
+    handleLogIn: handleLogIn,
+    createUser: createUser,
+    updatePortfolio: updatePortfolio,
+    buyStock: buyStock,
+    sellStock: sellStock
+}
     
