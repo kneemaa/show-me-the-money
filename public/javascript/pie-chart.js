@@ -3,16 +3,21 @@ var myChart = echarts.init(dom);
 var app = {};
 
 option = {
+	title: {
+      text: 'Distribution'
+      // subtext: 'International Business Machines Corp',
+      // sublink: 'https://www.ibm.com/'
+    },
     tooltip: {
         trigger: 'item',
         formatter: "{a} <br/>{b}: {c} ({d}%)"
     },
-    legend: {
-        orient: 'vertical',
-        x: '50px',
-        y: 'center',
-        data:['Stock1','Stock2','Stock3','Stock4','Stock5', 'Stock6']
-    },
+    // legend: {
+    //     orient: 'vertical',
+    //     x: '50px',
+    //     y: 'center',
+    //     data:['Stock1','Stock2','Stock3','Stock4','Stock5', 'Stock6']
+    // },
     series: [
         {
             name:'Distribution',

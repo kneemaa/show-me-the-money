@@ -24,9 +24,9 @@ var option = {
       return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
     }
   },
-  legend: {
-    data:['Down','Up']
-  },
+  // legend: {
+  //   data:['Down','Up']
+  // },
   grid: {
     left: '3%',
     right: '4%',
