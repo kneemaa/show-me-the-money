@@ -1,1 +1,16 @@
-<h1>Hello World</h1>
+<h2>Welcome <span id="nick" class="nickname">{{user}}</span></h2>
+<script src="https://cdn.auth0.com/js/lock/11.3.0/lock.min.js"></script>
+<script>
+  var lock = new Auth0Lock('bodahlDFCL8Q6SqSyVM70QA5xWeTNgP3', 'devious.auth0.com', {
+    auth: {
+    	domain: 'devious.auth0.com',
+    	audience: 'https://devious.auth0.com/userinfo',
+      redirectUrl: 'http://localhost:3000/callback',
+      responseType: 'code',
+      params: {
+        scope: 'openid profile' // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    }
+  });
+</script>
+<button onclick="lock.show();">Login</button>

@@ -1,37 +1,66 @@
 const express = require("express")
 const bodyParser = require("body-parser")
-const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const exphbs = require('express-handlebars')
 const db = require("./models")
 require('dotenv').config()
+//const ensureLoggedIn = require('connect-ensure-login');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
+const flash = require('connect-flash')
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+const router = express.Router();
 
 const app = express()
 
 const PORT = process.env.PORT || 3000
-
+/*
 if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file';
-}
+}*/
 
+const strategy = new Auth0Strategy(
+	{
+		domain: 'devious.auth0.com',
+		clientID: 'bodahlDFCL8Q6SqSyVM70QA5xWeTNgP3',
+		clientSecret: 'm-In24tbgp_VZatuXkWdCkZZf0FJKAMoMc_y4MCRi00LI8oVwMyLXOZUHbvCYyT3',
+		callbackURL:
+			process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'	
+	},
+	function(accessToken, refreshToken, extraParams, profile, done) {
+		return done(null, profile)
+	})
+
+passport.use(strategy)
+
+passport.serializeUser(function(user, done) {
+	done(null, user)
+})
+
+passport.deserializeUser(function(user, done) {
+	done(null, user)
+})
+
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
+app.use(cookieParser());
 //app.use(express.static("public"))
 app.engine("handlebars", exphbs({ defaultLayout: "nema-temp"}))
 app.set("view engine", "handlebars")
-app.use(cors());
-//routes here
-/*const routes = require('./routes/index')
-const user = require('./routes/user')*/
 
 
-require("./routes/auth-api-routes")(app)
-require("./routes/routes")(app)
+const routes = require('./routes/index')
 
-app.use( (error, request, response, next) => {
-	console.error(error.stack)
-	return response.status(error.status).json({ message: error.message })
-})
+app.use(routes)
+
+
+//const routes = require('./routes/auth-routes')
+//app.use(routes);
+//require('./routes/index')(app)
+
 
 db.sequelize.sync({ force: false }).then( () => {
 	app.listen(PORT, () => {
