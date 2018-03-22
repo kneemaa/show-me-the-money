@@ -1,15 +1,36 @@
-function handleLogIn(userEmail)
+function handleLogIn(userEmail){
     // Ajax get for user with userEmail
     $.ajax({
         method: "GET",
-        url: "/api/...:" + userEmail
-    }).then(
+        url: "/api/portfolio/:" + 1
+    }).then(res => {
+        const unformattedBalance = result[0].dataValues.account_balance;
+            console.log(unformattedBalance);
+            const formattedBalance = currencyFormatter.format(
+                unformattedBalance, { code: 'USD' });
+            console.log(formattedBalance);
+            const userName = result[0].dataValues.first_name +
+                " " + result[0].dataValues.last_name;
+            console.log(userName);
+            const stockArray = [];            
+            const userLedger = result[0].dataValues.Ledgers;
+            console.log(userLedger);
+            for (var i = 0; i < userLedger.length; i++) {
+            	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
+            	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
+            };
+            console.log(stockArray);
+
+       
+    
         // if no user (res) then call createNewUser()
         // if user returned update dom with userInfo (name and money)
         // push stocks to stocks[]
         updatePortfolio(stocks)
-    )
-function createNewUser()
+    });
+}
+
+function createNewUser(){
     // Ajax post to create user in db
     $.ajax({
         method: "POST",
@@ -17,11 +38,14 @@ function createNewUser()
     }).then(
     // update dom with user info returned (name and money)
     )
-function updatePortfolio()
+}
+
+function updatePortfolio(){
     // push portfolio[] through websocket to update subscriptions
     // websocket connection will update the dom
+}
 
-function searchStock()
+function searchStock(){
     // ajax get call that runs IEX api call
     $.ajax({
         method: "GET",
@@ -30,9 +54,9 @@ function searchStock()
         // updates dom with return info
     })
     
-    
+}
 
-function buyStock(symbol)
+function buyStock(symbol){
     // push stock symbol to stocks[]
     stocks.push(symbol);
     console.log(stocks)
@@ -50,8 +74,9 @@ function buyStock(symbol)
     // call updatePortfolio()
     updatePortfolio(stocks)
     
+}
 
-function sellStock(symbol)
+function sellStock(symbol){
     // remove stock from stocks[]
     let spliceIndex = stocks.indexOf(symbol);
     stocks.splice(spliceIndex, 1);
@@ -61,13 +86,14 @@ function sellStock(symbol)
     // do math to add revenue back to user money 
     // update DOM
     updatePortfolio(stocks)
+}
 
-
-module.exports = {
+const utils = {
     handleLogIn: handleLogIn,
-    createUser: createUser,
+    createNewUser: createNewUser,
     updatePortfolio: updatePortfolio,
     buyStock: buyStock,
     sellStock: sellStock
 }
     
+// export {utils};
