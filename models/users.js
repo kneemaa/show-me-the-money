@@ -12,12 +12,20 @@ module.exports = (sequelize, DataTypes) => {
 				isEmail: true
 			}
 		},
-		stocks_owned: {
-			type: DataTypes.JSON
-		}
+		account_balance: {
+			type: DataTypes.INTEGER,
+			defaultValue: 100000,
+		},
+		// stocks_owned: {
+		// 	type: DataTypes.JSON
+		// }
 	})
 
-
+	Users.associate = models => {
+		Users.hasMany(models.Ledger, {
+			onDelete: "cascade"
+		})
+	}
 
 	return Users
 }
