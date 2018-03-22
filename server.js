@@ -62,6 +62,7 @@ app.set("view engine", "handlebars")
 const routes = require('./routes/index')
 app.use(routes)
 
+require('./routes/api-routes')(app)
 
 db.sequelize.sync({ force: false }).then( () => {
 	const server = app.listen(PORT, () => {

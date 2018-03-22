@@ -1,7 +1,7 @@
 const express = require("express");
 // const bodyParser = require("body-parser");
 const db = require("../models");
-const currencyFormatter = require('currency-formatter');
+//const currencyFormatter = require('currency-formatter');
 
 
 // const app = express();
