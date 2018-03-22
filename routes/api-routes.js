@@ -50,6 +50,10 @@ module.exports = function (app) {
             include: [db.Ledger]
 
         }).then(function (result) {
+            const unformattedBalance = result[0].dataValues.account_balance;
+            // console.log(unformattedBalance);
+            const formattedBalance = currencyFormatter.format(
+                unformattedBalance, { code: 'USD' });
             res.json(result);
 
             // FOR FRONT END AJAX
