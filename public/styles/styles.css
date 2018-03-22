@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+
+body {
+  font-family: 'Open Sans', arial, sans-serif;
+  font-size: 15px;
+  background: rgba(0,0,0,.1);
+}
+
+.card { border-radius: 0;}
+.my-font-small { font-size: 11px; opacity: .6;}
+.form-control, .btn { font-size: 13px; border-radius: 0;}
+
+/* ---------- header ---------- */
+
+header nav.navbar {
+  padding: .8rem 1rem;
+  box-shadow: none;
+  background: linear-gradient(to right, #161616, #373737);
+}
+
+.navbar-brand { margin-right: 60px;}
+.nav-link { font-size: 13px;}
+
+.md-form { margin-top: 0;}
+.md-form .form-control {
+  padding: .3rem .5rem;
+  margin: 0;
+  font-size: 13px;
+  width: 200px;
+}
+
+/* ---------- home page ---------- */
+
+header .view {
+	background: url("../images/bg.jpg") no-repeat center center;
+	background-size: cover;
+	height: calc(100vh + 50px);
+}
+
+#about {
+	background-color: white;
+	padding: 50px 0;
+}
+
+/* ---------- user  ---------- */
+
+#user a, header a { color: white;}
+#user a:hover, header a:hover { color: blue;}
+
+#user {
+	background: linear-gradient(to right, #161616, #373737);
+	padding-top: 100px;
+	padding-bottom: 60px;
+}
+
+#content {
+	position: relative;
+	top: -50px;
+	padding: 40px;
+}
+
+#panel-trade .form-control { padding: .3rem .75rem; }
+
+#panel-trade .btn { margin: 0; }
+
+#panel-market .suggested {
+	box-shadow: none;
+	border: solid 1px rgba(0,0,0,.5);
+}
+
+#panel-market .suggested img {
+  height: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+#panel-market table.table td, table.table th { padding: .2rem 1rem;}
+#panel-market .suggested .fa { margin-left: 5px;}
+#panel-market .suggested .fa.fa-arrow-circle-up { color: green;}
+#panel-market .suggested .fa.fa-arrow-circle-down { color: red;}
+
+/* ---------- table ---------- */
+
+.table td, .table thead th { vertical-align: middle;}
+table { font-size: 13px; line-height: 18px;}
+table.table a { margin: 0 .3rem;}
+
+.btn-custom-small {
+  font-size: 11px;
+  padding: .5rem 1rem;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* ---------- diagrams ---------- */
+
+#chart-stock, #portfolio, #chart-market { height: 300px;}
+
+/* ---------- footer ---------- */
+
+footer { background: linear-gradient(to right, #161616, #373737);}
+footer h5 { opacity: .5;}
+footer a, footer p { font-size: 13px; opacity: .5;}
+footer a:hover { opacity: 1;}

@@ -1,6 +1,6 @@
-
-<h2>Welcome User</h2>
-<script>
+<!-- user panel -->
+	<div>
+		<script>
   var lock = new Auth0Lock('aJPXuic5MPSYv35id6DoDxl7ZJJP2rtT', 'devious.auth0.com', {
     auth: {
     	domain: 'devious.auth0.com',
@@ -15,3 +15,219 @@
 </script>
 <button onclick="lock.show();">Login</button>
 <button onclick="location.href='/logout';">Logout</button>
+	</div>
+  <section id="user" class="white-text">
+	  <div class="container">
+		  <div class="row">
+			  <div class="col-6">
+				  <h3>My Account</h3>
+				  <p class="my-font-small">{{user_email}}</p>
+			  </div>
+			  <div class="col-3">
+			  	<p class="my-font-small">Total Amount</p>
+				<p>${{user_total}}</p>
+			  </div>
+			  <div class="col-3">
+			  	<p class="my-font-small">Available Amount</p>
+				<p>${{user_available}}</p>
+			  </div>
+		  </div>
+		  <div class="row tabs-wrapper mt-4">
+			  <ul class="nav classic-tabs text-center" role="tablist">
+				  <li class="nav-item">
+					  <a class="my-font-small nav-link waves-light active" data-toggle="tab" href="#panel-portfolio" role="tab"><i class="fa fa-user fa-2x" aria-hidden="true"></i><br>Portfolio</a>
+				  </li>
+				  <li class="nav-item">
+					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-market" role="tab"><i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>Market</a>
+				  </li>
+				  <li class="nav-item">
+					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-history" role="tab"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i><br>History</a>
+				  </li>
+				  <li class="nav-item">
+					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-trade" role="tab"><i class="fa fa-star fa-2x" aria-hidden="true"></i><br>Trade</a>
+				  </li>
+				  <li class="nav-item">
+					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-search" role="tab"><i class="fa fa-search fa-2x" aria-hidden="true"></i><br>Search</a>
+				  </li>
+			  </ul>
+		  </div>
+	  </div>
+  </section>
+
+  <section id="content" class="container tab-content card">
+
+	  <!-- portfolio -->
+	  <div class="tab-pane fade in show active" id="panel-portfolio" role="tabpanel">
+		  <h3 class="mb-5">Portfolio</h3>
+		  <div class="row mb-5">
+			  <div id="chart-stock" class="col-8"></div>
+			  <div id="portfolio" class="col-4"></div>
+		  </div>
+		  <h3 class="mb-5">My Stocks</h3>
+		  <table class="table table-hover text-center">
+			  <thead>
+				  <tr>
+					  <th class="text-left">Symbol<br><span class="my-font-small">Company</span></th>
+					  <th>QTY</th>
+					  <th>Last Price $</th>
+					  <th>Price Paid $</th>
+					  <th>Market Value $</th>
+					  <th>Total Gain $</th>
+					  <th>Profit/Loss %</th>
+					  <th>Action</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  {{#each stock_detail}}
+				  <tr>
+					  <td class="text-left">{{symbol}}<br><span class="my-font-small">{{company}}<span></td>
+						  <td>{{quantity}}</td>
+						  <td>{{last_price}}</td>
+						  <td>{{price_paid}}</td>
+						  <td>{{market_value}}</td>
+						  <td>{{total_gain}}</td>
+						  <td>{{profit}}</td>
+						  <td>
+							  <a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
+							  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+						  </td>
+					  </tr>
+					  {{/each}}
+				  </tbody>
+			  </table>
+	  </div>
+
+	  <!-- market -->
+	  <div class="tab-pane fade in show active" id="panel-market" role="tabpanel">
+		  <h3 class="mb-5">Major Index</h3>
+		  <div class="row mb-5">
+			  <div id="chart-market" class="col-6"></div>
+			  <table class="col-6 table table-hover text-center">
+				  <thead>
+					  <tr>
+						  <th class="text-left"></th>
+						  <th>Last</th>
+						  <th>Change</th>
+						  <th>% CHG</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  {{#each market_index}}
+					  <tr>
+						  <td class="text-left">{{name}}</td>
+						  <td>{{last_price}}</td>
+						  <td>{{change}}</td>
+						  <td>{{chg}}</td>
+					  </tr>
+					  {{/each}}
+				  </tbody>
+			  </table>
+		  </div>
+
+		  <h3 class="mb-5 mt-5">Suggested Stocks</h3>
+		  <div class="row card-deck text-center">
+			  {{#each suggested_stock}}
+			  <div class="card suggested">
+				  <div class="card-body">
+					  <img src="{{ icon_src }}">
+					  <p><span class="profit">{{profit}}</span><i class="fa fa-arrow-circle-down"></i></p>
+					  <div>
+						  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+						  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+					  </div>
+				  </div>
+			  </div>
+			  {{/each}}
+		  </div>
+	  </div>
+
+	  <!-- history -->
+	  <div class="tab-pane fade" id="panel-history" role="tabpanel">
+		  <h3>Trade History</h3>
+		  <table class="table table-hover mt-5">
+			  <thead>
+				  <tr>
+					  <th>Date</th>
+					  <th>Action</th>
+					  <th>Symbol</th>
+					  <th>QTY</th>
+					  <th>Trade Price $</th>
+					  <th>Total $</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  {{#each trade_history}}
+				  <tr>
+					  <td>{{date}}</td>
+					  <td>{{action}}</td>
+					  <td>{{symbol}}</td>
+					  <td>{{quantity}}</td>
+					  <td>{{price}}</td>
+					  <td>{{total}}</td>
+				  </tr>
+				  {{/each}}
+			  </tbody>
+		  </table>
+	  </div>
+
+	  <!-- trade -->
+	  <div class="tab-pane fade" id="panel-trade" role="tabpanel">
+		  <h3>Trade</h3>
+		  <form class="mt-5">
+			  <div class="form-row d-flex align-items-end">
+				  <div class="col">
+					  <label for="action" class="my-font-small">Action</label>
+					  <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="Buy/Sell">
+					  <div class="dropdown-menu col">
+						  <a class="dropdown-item" href="#">Buy</a>
+						  <a class="dropdown-item" href="#">Sell</a>
+						  <a class="dropdown-item" href="#">Something else</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="#">Separated link</a>
+					  </div>
+				  </div>
+				  <div class="col">
+					  <label for="action" class="my-font-small">Symbol</label>
+					  <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="eg. GOOG">
+					  <div class="dropdown-menu col">
+						  {{#each stock_detail}}
+						  <a class="dropdown-item" href="#">{{symbol}}</a>
+						  {{/each}}
+					  </div>
+				  </div>
+				  <div class="col">
+					  <label for="price" class="my-font-small">Price $</label>
+					  <input type="text" class="form-control" name="price" placeholder="$0.00">
+				  </div>
+				  <div class="col">
+					  <label for="qty" class="my-font-small">QTY</label>
+					  <input type="text" class="form-control" name="qty" placeholder="QTY">
+				  </div>
+				  <div class="col">
+					  <label for="total" class="my-font-small">Total</label>
+					  <input type="text" class="form-control" name="total" placeholder="$0.00">
+				  </div>
+				  <div class="col-12 mt-5">
+					  <a class="btn btn-indigo" href="#0" style="margin:0">Confirm</a>
+				  </div>
+			  </div>
+		  </form>
+	  </div>
+
+	  <!-- search -->
+	  <div class="tab-pane fade" id="panel-search" role="tabpanel">
+		  <h3>Search</h3>
+		  <form id="trade" class="mt-5">
+			  <div class="form-row d-flex align-items-end">
+				  <div class="col-4">
+					  <label for="price" class="my-font-small">Search symbol or company name</label>
+					  <input type="text" class="form-control" name="price" placeholder="eg. GOOG">
+				  </div>
+				  <div class="col-12 mt-5">
+					  <a class="btn btn-indigo" href="#0" style="margin:0">Search</a>
+				  </div>
+			  </div>
+		  </form>
+	  </div>
+  </section>
+
