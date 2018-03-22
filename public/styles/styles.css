@@ -8,6 +8,7 @@ body {
 
 .card { border-radius: 0;}
 .my-font-small { font-size: 11px; opacity: .6;}
+.form-control, .btn { font-size: 13px; border-radius: 0;}
 
 /* ---------- header ---------- */
 
@@ -43,6 +44,9 @@ header .view {
 
 /* ---------- user  ---------- */
 
+#user a, header a { color: white;}
+#user a:hover, header a:hover { color: blue;}
+
 #user {
 	background: linear-gradient(to right, #161616, #373737);
 	padding-top: 100px;
@@ -58,7 +62,6 @@ header .view {
 #panel-trade .form-control { padding: .3rem .75rem; }
 
 #panel-trade .btn { margin: 0; }
-#panel-trade input { font-size: 13px; border-radius: 0}
 
 #panel-market .suggested {
 	box-shadow: none;
