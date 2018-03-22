@@ -18,8 +18,23 @@
   },
   "homepage": "https://github.com/smalldoorman/show-me-the-money#readme",
   "dependencies": {
+    "auth0-lock": "^11.4.0",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-jwt": "^5.3.1",
+    "express-jwt-authz": "^1.0.0",
+    "express-session": "^1.15.6",
+    "jwks-rsa": "^1.2.1",
     "mysql2": "^1.5.2",
-    "sequelize": "^4.37.1"
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.1",
+    "request": "^2.85.0",
+    "sequelize": "^4.37.1",
+    "socket.io": "^2.0.4"
   }
 }
