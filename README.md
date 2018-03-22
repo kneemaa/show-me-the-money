@@ -1,1 +1,1 @@
-# show-me-the-money
+# Show-Me-The-Money
