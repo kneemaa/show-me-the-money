@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+// import utils from "./utilities.js";
 
     // Make connection
     // this 'socket' is a separate frontend socket variable
@@ -40,3 +40,5 @@ $(document).ready(function(){
     })
 
 })
+
+handleLogIn()
