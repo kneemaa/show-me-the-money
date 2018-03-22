@@ -10,7 +10,8 @@ var stocks = [
 	{value:1218, name:'Stock6'}
 ]
 
-barChart('chart', 'IBM', 'International Business Machines Corporation', price);
+barChart('chart-stock', 'IBM', 'International Business Machines Corporation', price);
+barChart('chart-market', 'IBM', 'International Business Machines Corporation', price);
 pieChart('portfolio', stocks);
 
 // pie chart generator

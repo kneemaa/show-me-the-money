@@ -91,7 +91,7 @@ table.table a { margin: 0 .3rem;}
 
 /* ---------- diagrams ---------- */
 
-#chart, #portfolio { height: 300px;}
+#chart-stock, #portfolio, #chart-market { height: 300px;}
 
 /* ---------- footer ---------- */
 
