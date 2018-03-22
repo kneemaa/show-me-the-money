@@ -26,17 +26,17 @@ const strategy = new Auth0Strategy(
 		callbackURL:
 			process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'	
 	},
-	function(accessToken, refreshToken, extraParams, profile, done) {
+	(accessToken, refreshToken, extraParams, profile, done) => {
 		return done(null, profile)
 	})
 
 passport.use(strategy)
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
 	done(null, user)
 })
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser((user, done) => {
 	done(null, user)
 })
 
@@ -53,11 +53,10 @@ app.use(
 )
 app.use(passport.initialize())
 app.use(passport.session())
-app.engine("handlebars", exphbs({ defaultLayout: "nema-temp"}))
+app.engine("handlebars", exphbs({ defaultLayout: "main"}))
 app.set("view engine", "handlebars")
 
 const routes = require('./routes/index')
-
 app.use(routes)
 
 
