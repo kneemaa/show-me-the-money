@@ -130,13 +130,8 @@ db.sequelize.sync({ force: false }).then( () => {
             let data= JSON.parse(message)
             let symbol = data.symbol;
             let lastPrice = data.lastSalePrice;
-<<<<<<< HEAD
             console.log("Symbol: " + symbol + ", Price: " + lastPrice)
             io.sockets.emit("broadcast", {symbol: symbol, price: lastPrice});
-=======
-            // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
-            io.sockets.emit("broadcast", {description: "price " + lastPrice});
->>>>>>> c6069504139bf8390d7129a7363ae030eba93863
     })
 
     // Connect to the channel
