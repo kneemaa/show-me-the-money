@@ -130,7 +130,7 @@ db.sequelize.sync({ force: false }).then( () => {
             let data= JSON.parse(message)
             let symbol = data.symbol;
             let lastPrice = data.lastSalePrice;
-            console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+            // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
             io.sockets.emit("broadcast", {description: "price " + lastPrice});
     })
 
