@@ -13,8 +13,6 @@ var stocks = [
 barChart('chart-stock', 'GOOG', 'Google', price);
 barChart('chart-stock', 'APPL', 'Apple, Inc', price);
 
-
-barChart('chart-market', 'IBM', 'International Business Machines Corporation', price);
 pieChart('portfolio', stocks);
 
 // pie chart generator
@@ -34,7 +32,7 @@ function pieChart(canvas, stocks){
 	        {
 	            name:'Distribution',
 	            type:'pie',
-	            radius: ['40%', '50%'],
+	            radius: ['40%', '60%'],
 	            avoidLabelOverlap: false,
 	            label: {
 	                normal: {
@@ -134,7 +132,7 @@ function barChart(canvas, symbol, company, price){
 				type: 'line',
 				itemStyle: {
 					barBorderColor: 'rgba(100,0,255,1)',
-					color: 'rgba(100,0,255,1)'
+					color: '#546dd0'
 				},
 				data: price
 			},
@@ -160,7 +158,7 @@ function barChart(canvas, symbol, company, price){
 		      },
 		      itemStyle: {
 		        barBorderColor: 'rgba(0,0,0,0)',
-		        color: 'rgba(0, 200, 255, 1)'
+		        color: '#00BDD4'
 		      },
 		      data: increase
 		    },
@@ -176,7 +174,7 @@ function barChart(canvas, symbol, company, price){
 		      },
 		      itemStyle: {
 		        barBorderColor: 'rgba(0,0,0,0)',
-		        color: 'rgba(255,100,0,1)'
+		        color: '#FF6300'
 		      },
 		      data: decrease
 		    }

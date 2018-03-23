@@ -58,7 +58,7 @@ module.exports = function (app) {
             console.log(userLedger);
 
             var stock_detail = [];
-            
+
             for (var i = 0; i < userLedger.length; i++) {
                 console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
                 stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
@@ -72,10 +72,10 @@ module.exports = function (app) {
                 }
                 stock_detail.push(thisStock);
                 console.log(thisStock);
-                // portfolioValue = function(a,b) {                
+                // portfolioValue = function(a,b) {
 
                 // }
-                
+                $("#username").text(result[0].dataValues.email)
             };
 
             const formattedResult = [

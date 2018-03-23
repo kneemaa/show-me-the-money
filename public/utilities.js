@@ -4,26 +4,29 @@ function handleLogIn(userEmail){
         method: "GET",
         url: "/api/portfolio/" + 1
     }).then(result => {
-        // console.log(result);
-        const unformattedBalance = result[0].account_balance;
-            // console.log(unformattedBalance);
-            const formattedBalance = currencyFormatter.format(
-                unformattedBalance, { code: 'USD' });
-            // console.log(formattedBalance);
-            const userName = result[0].dataValues.first_name +
-                " " + result[0].dataValues.last_name;
-            // console.log(userName);
-            const stockArray = [];            
-            const userLedger = result[0].dataValues.Ledgers;
-            // console.log(userLedger);
-            for (var i = 0; i < userLedger.length; i++) {
-            	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
-            	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
-            };
+        console.log(result);
+		let userName = result.user_email;
+		console.log(userName)
+        // const unformattedBalance = result[0].account_balance;
+        //     // console.log(unformattedBalance);
+        //     const formattedBalance = currencyFormatter.format(
+        //         unformattedBalance, { code: 'USD' });
+        //     // console.log(formattedBalance);
+        //     const userName = result[0].first_name +
+        //         " " + result[0].last_name;
+        //     // console.log(userName);
+        //     const stockArray = [];
+        //     const userLedger = result[0].dataValues.Ledgers;
+        //     // console.log(userLedger);
+        //     for (var i = 0; i < userLedger.length; i++) {
+        //     	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
+        //     	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
+        //     };
             // console.log(stockArray);
 
-       
-    
+			$("#username").html(userName);
+
+
         // if no user (res) then call createNewUser()
         // if user returned update dom with userInfo (name and money)
         // push stocks to stocks[]
@@ -54,7 +57,7 @@ function searchStock(){
     }).then((res) => {
         // updates dom with return info
     })
-    
+
 }
 
 function buyStock(symbol){
@@ -69,12 +72,12 @@ function buyStock(symbol){
     // })
 
     // do math to remove total cost from user money
-    
+
     // update DOM
 
     // call updatePortfolio()
     updatePortfolio(stocks)
-    
+
 }
 
 function sellStock(symbol){
@@ -84,7 +87,7 @@ function sellStock(symbol){
     console.log(stocks);
     // Ajax call to return the current price of the stock
     $.
-    // do math to add revenue back to user money 
+    // do math to add revenue back to user money
     // update DOM
     updatePortfolio(stocks)
 }
@@ -96,5 +99,5 @@ const utils = {
     buyStock: buyStock,
     sellStock: sellStock
 }
-    
+
 // export {utils};
