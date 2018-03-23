@@ -75,10 +75,19 @@ module.exports = function (app) {
                     profit: 0,
                 }
                 stock_detail.push(thisStock);
-                console.log("2", thisStock);
-                // portfolioValue = function(a,b) {                
+                console.log(thisStock);
+                // portfolioValue = function(a,b) {
 
                 // }
+                $("#username").text(result[0].dataValues.email)
+            };
+
+            const formattedResult = [
+                {
+                    user_email: result[0].dataValues.email,
+                    user_value: 0,
+                    user_available: formattedBalance,
+                    stock_detail3: stock_detail
 
             };
 
