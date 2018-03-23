@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+<!-- user panel --->
+=======
 <!-- user panel -->
 	<div>
 		<script>
@@ -16,6 +20,7 @@
 <button onclick="lock.show();">Login</button>
 <button onclick="location.href='/logout';">Logout</button>
 	</div>
+>>>>>>> f005b2fac5c83f7ee2051aaadb9aebe595a8e288
   <section id="user" class="white-text">
 	  <div class="container">
 		  <div class="row">
@@ -25,7 +30,7 @@
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Total Amount</p>
-				<p>${{user_total}}</p>
+				<p>${{user_value}}</p>
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Available Amount</p>
@@ -36,9 +41,6 @@
 			  <ul class="nav classic-tabs text-center" role="tablist">
 				  <li class="nav-item">
 					  <a class="my-font-small nav-link waves-light active" data-toggle="tab" href="#panel-portfolio" role="tab"><i class="fa fa-user fa-2x" aria-hidden="true"></i><br>Portfolio</a>
-				  </li>
-				  <li class="nav-item">
-					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-market" role="tab"><i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>Market</a>
 				  </li>
 				  <li class="nav-item">
 					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-history" role="tab"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i><br>History</a>
@@ -80,9 +82,15 @@
 			  {{!-- <tbody>
 				  {{#each stock_detail}}
 				  <tr>
+<<<<<<< HEAD
 					  <td class="text-left">{{stockID}}<br><span class="my-font-small">{{stockID}}<span></td>
+=======
+					  <td class="text-left">{{stockID}}
+						  <br><span class="my-font-small">{{stockID}}<span>
+						  </td>
+>>>>>>> 593787cc7d25d60c456f667fe638554359c8d16c
 						  <td>{{quantity}}</td>
-						  <td>{{last_price}}</td>
+						  <td class="{{stockId}}">{{last_price}}</td>
 						  <td>{{price_paid}}</td>
 						  <td>{{market_value}}</td>
 						  <td>{{total_gain}}</td>
@@ -95,6 +103,7 @@
 					  {{/each}}
 				  </tbody> --}}
 			  </table>
+<<<<<<< HEAD
 	  </div>
 
 	  <!-- market -->
@@ -123,22 +132,52 @@
 				  </tbody>
 			  </table>
 		  </div>
+=======
+>>>>>>> 593787cc7d25d60c456f667fe638554359c8d16c
 
-		  <h3 class="mb-5 mt-5">Suggested Stocks</h3>
-		  <div class="row card-deck text-center">
-			  {{#each suggested_stock}}
-			  <div class="card suggested">
-				  <div class="card-body">
-					  <img src="{{ icon_src }}">
-					  <p><span class="profit">{{profit}}</span><i class="fa fa-arrow-circle-down"></i></p>
-					  <div>
-						  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
-						  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+			  <h3 class="mb-5 mt-5">Suggested Stocks</h3>
+			  <div class="row card-deck text-center">
+				  <div class="card suggested">
+					  <div class="card-body">
+						  <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+						  <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+						  <div>
+							  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+							  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="card suggested">
+					  <div class="card-body">
+						  <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+						  <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+						  <div>
+							  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+							  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="card suggested">
+					  <div class="card-body">
+						  <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+						  <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+						  <div>
+							  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+							  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="card suggested">
+					  <div class="card-body">
+						  <img src="https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg">
+						  <p><span class="profit">0.00%</span><i class="fa fa-arrow-circle-down"></i></p>
+						  <div>
+							  <a class="btn btn-indigo btn-custom-small" href="#0">Detail</a>
+							  <a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
+						  </div>
 					  </div>
 				  </div>
 			  </div>
-			  {{/each}}
-		  </div>
 	  </div>
 
 	  <!-- history -->
