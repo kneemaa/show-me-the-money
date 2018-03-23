@@ -10,7 +10,10 @@ var stocks = [
 	{value:1218, name:'Stock6'}
 ]
 
-barChart('chart-stock', 'IBM', 'International Business Machines Corporation', price);
+barChart('chart-stock', 'GOOG', 'Google', price);
+barChart('chart-stock', 'APPL', 'Apple, Inc', price);
+
+
 barChart('chart-market', 'IBM', 'International Business Machines Corporation', price);
 pieChart('portfolio', stocks);
 

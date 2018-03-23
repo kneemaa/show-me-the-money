@@ -9,7 +9,7 @@
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Total Amount</p>
-				<p>${{user_total}}</p>
+				<p>${{user_value}}</p>
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Available Amount</p>
@@ -64,9 +64,11 @@
 			  <tbody>
 				  {{#each stock_detail}}
 				  <tr>
-					  <td class="text-left">{{symbol}}<br><span class="my-font-small">{{company}}<span></td>
+					  <td class="text-left">{{stockID}}
+						  <br><span class="my-font-small">{{stockID}}<span>
+						  </td>
 						  <td>{{quantity}}</td>
-						  <td>{{last_price}}</td>
+						  <td class="{{stockId}}">{{last_price}}</td>
 						  <td>{{price_paid}}</td>
 						  <td>{{market_value}}</td>
 						  <td>{{total_gain}}</td>
