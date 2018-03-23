@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		},
 		account_balance: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.FLOAT,
 			defaultValue: 100000,
 		},
 		// stocks_owned: {

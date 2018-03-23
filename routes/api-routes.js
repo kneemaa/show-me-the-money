@@ -51,27 +51,58 @@ module.exports = function (app) {
 
         }).then(function (result) {
             const unformattedBalance = result[0].dataValues.account_balance;
-            // console.log(unformattedBalance);
             const formattedBalance = currencyFormatter.format(
                 unformattedBalance, { code: 'USD' });
-            res.json(result);
+            const stockArray = [];
+            const userLedger = result[0].dataValues.Ledgers;
+            console.log(userLedger);
 
-            // FOR FRONT END AJAX
-            // const unformattedBalance = result[0].dataValues.account_balance;
+            var stock_detail = [];
+            
+            for (var i = 0; i < userLedger.length; i++) {
+                console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
+                stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
+                var thisStock = {
+                    stockID: result[0].dataValues.Ledgers[i].dataValues.symbol,
+                    quantity: result[0].dataValues.Ledgers[i].dataValues.stock_count,
+                    price_paid: result[0].dataValues.Ledgers[i].dataValues.purchase_price,
+                    market_value: 0,
+                    total_gain: 0,
+                    profit: 0,
+                }
+                stock_detail.push(thisStock);
+                console.log(thisStock);
+                // portfolioValue = function(a,b) {                
+
+                // }
+                
+            };
+
+            const formattedResult = [
+                {
+                    user_email: result[0].dataValues.email,
+                    user_value: 0,
+                    user_available: formattedBalance,
+                    stock_detail3: stock_detail
+
+
+                }
+            ];
+
+            console.log(formattedResult);
+
+            res.json(formattedResult);
+
+            // // FOR FRONT END AJAX
+            // // const unformattedBalance = result[0].dataValues.account_balance;
             // console.log(unformattedBalance);
-            // const formattedBalance = currencyFormatter.format(
-            //     unformattedBalance, { code: 'USD' });
+            // // const formattedBalance = currencyFormatter.format(
+            // // unformattedBalance, { code: 'USD' });
             // console.log(formattedBalance);
             // const userName = result[0].dataValues.first_name +
             //     " " + result[0].dataValues.last_name;
             // console.log(userName);
-            // const stockArray = [];            
-            // const userLedger = result[0].dataValues.Ledgers;
-            // console.log(userLedger);
-            // for (var i = 0; i < userLedger.length; i++) {
-            // 	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
-            // 	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
-            // };
+
             // console.log(stockArray);
 
         });
@@ -94,17 +125,34 @@ module.exports = function (app) {
         });
     });
 
+    //Buy Route
+    app.post("/api/buy/:id&:symbol&:purchase_price", function (req, res) {
+        db.Ledger.create({
+            symbol: req.params.symbol,
+            purchase_price: req.params.purchase_price,
+            stock_count: 5,
+            is_owned: true,
+            UserId: req.params.id,
+
+        }).then(function (result) {
+            res.json(result)
+        });
+    });
+
     //--Search Stock External API call
     app.get("/api/search/:symbol", function (req, res) {
         const symbol = req.params.symbol;
         //NOT DONE YET
-    })
+    });
+
+
+    //FOR API Link at bottom of view.//
 
     //All Users
     app.get("/api/all/", function (req, res) {
         db.Users.findAll({
 
-        }).then(function(result){
+        }).then(function (result) {
             res.json(result);
         });
     });
@@ -113,22 +161,8 @@ module.exports = function (app) {
     app.get("/api/history/", function (req, res) {
         db.Ledger.findAll({
 
-        }).then(function(result){
-            res.json(result);
-        });
-    });
-
-    //Buy Route
-    app.post("/api/buy/:id", function (req, res) {
-        db.Ledger.create({
-            symbol: "SNAP",
-            purchase_price: 50,
-            stock_count: 5,
-            is_owned: true,
-            UserId: req.params.id,
-
         }).then(function (result) {
-            res.json(result)
+            res.json(result);
         });
     });
 
