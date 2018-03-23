@@ -2,9 +2,11 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const db = require("../models");
 const currencyFormatter = require('currency-formatter');
+const exphbs = require('express-handlebars');
+const app = express();
+app.engine("handlebars", exphbs({ defaultLayout: "main" }))
+app.set("view engine", "handlebars")
 
-
-// const app = express();
 
 // app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json())
@@ -50,6 +52,8 @@ module.exports = function (app) {
             include: [db.Ledger]
 
         }).then(function (result) {
+            
+            console.log("1!", result);
             const unformattedBalance = result[0].dataValues.account_balance;
             const formattedBalance = currencyFormatter.format(
                 unformattedBalance, { code: 'USD' });
@@ -58,53 +62,38 @@ module.exports = function (app) {
             console.log(userLedger);
 
             var stock_detail = [];
-            
+
             for (var i = 0; i < userLedger.length; i++) {
-                console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
-                stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
+                console.log(result[0].dataValues.symbol);
+                stockArray.push(result[0].dataValues.Ledgers[i].symbol);
                 var thisStock = {
-                    stockID: result[0].dataValues.Ledgers[i].dataValues.symbol,
-                    quantity: result[0].dataValues.Ledgers[i].dataValues.stock_count,
-                    price_paid: result[0].dataValues.Ledgers[i].dataValues.purchase_price,
+                    stockID: result[0].dataValues.Ledgers[i].symbol,
+                    quantity: result[0].dataValues.Ledgers[i].stock_count,
+                    price_paid: result[0].dataValues.Ledgers[i].purchase_price,
                     market_value: 0,
                     total_gain: 0,
                     profit: 0,
                 }
                 stock_detail.push(thisStock);
-                console.log(thisStock);
+                console.log("2", thisStock);
                 // portfolioValue = function(a,b) {                
 
                 // }
-                
+
             };
 
-            const formattedResult = [
-                {
-                    user_email: result[0].dataValues.email,
-                    user_value: 0,
-                    user_available: formattedBalance,
-                    stock_detail3: stock_detail
+            const formattedResult = {
+                user_email: result[0].dataValues.email,
+                user_value: 0,
+                user_available: formattedBalance,
+                stock_detail: stock_detail
+            };
 
-
-                }
-            ];
-
-            console.log(formattedResult);
+            console.log("3", formattedResult);
 
             res.json(formattedResult);
 
-            // // FOR FRONT END AJAX
-            // // const unformattedBalance = result[0].dataValues.account_balance;
-            // console.log(unformattedBalance);
-            // // const formattedBalance = currencyFormatter.format(
-            // // unformattedBalance, { code: 'USD' });
-            // console.log(formattedBalance);
-            // const userName = result[0].dataValues.first_name +
-            //     " " + result[0].dataValues.last_name;
-            // console.log(userName);
-
-            // console.log(stockArray);
-
+            res.render("index", { stock_detail:formattedResult })
         });
     });
 
