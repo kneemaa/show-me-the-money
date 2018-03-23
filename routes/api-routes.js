@@ -82,28 +82,28 @@ module.exports = function (app) {
                 $("#username").text(result[0].dataValues.email)
             };
 
-            const formattedResult = [
-                {
-                    user_email: result[0].dataValues.email,
-                    user_value: 0,
-                    user_available: formattedBalance,
-                    stock_detail3: stock_detail
+            // const formattedResult = [
+            //     {
+            //         user_email: result[0].dataValues.email,
+            //         user_value: 0,
+            //         user_available: formattedBalance,
+            //         stock_detail3: stock_detail
 
-            };
+            // }
 
-            const formattedResult = {
-                user_email: result[0].dataValues.email,
-                user_value: 0,
-                user_available: formattedBalance,
-                stock_detail: stock_detail
-            };
+        //     const formattedResult = {
+        //         user_email: result[0].dataValues.email,
+        //         user_value: 0,
+        //         user_available: formattedBalance,
+        //         stock_detail: stock_detail
+        //     };
 
-            console.log("3", formattedResult);
+        //     console.log("3", formattedResult);
 
-            res.json(formattedResult);
+        //     res.json(formattedResult);
 
-            res.render("index", { stock_detail:formattedResult })
-        });
+        //     res.render("index", { stock_detail:formattedResult })
+        // });
     });
 
     //User Ledger
@@ -164,4 +164,5 @@ module.exports = function (app) {
         });
     });
 
-}; //module.exports close
+}); //module.exports close
+}

@@ -91,12 +91,13 @@ db.sequelize.sync({ force: false }).then( () => {
                 let data= JSON.parse(message)
                 let symbol = data.symbol;
                 let lastPrice = data.lastSalePrice;
-                // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+                console.log("Symbol: " + symbol + ", Price: " + lastPrice)
                 socket.emit("portfolio", {symbol: symbol, price: lastPrice});
             })
 
             //connect to the channel, and subscribe to the stocks sent in user
             iex.on("connect", () => {
+              iex.emit("subscribe", "WFC,NKE")
                 // iex.emit("subscribe", stocks.join(",")) //will be dynamic data from db
                 // below was hard coded practice data 
                 // var newData = {
@@ -130,7 +131,7 @@ db.sequelize.sync({ force: false }).then( () => {
             let data= JSON.parse(message)
             let symbol = data.symbol;
             let lastPrice = data.lastSalePrice;
-            console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+            // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
             io.sockets.emit("broadcast", {symbol: symbol, price: lastPrice});
     })
 

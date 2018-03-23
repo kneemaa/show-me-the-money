@@ -52,8 +52,26 @@ $(document).ready(function(){
     socket.on("portfolio", function(data){
         // console.log(data);
         //--loop through table--//
-        if(data.symbol === $(".stock-symbol").val()){
-            $(".last-price-")
+        if(data.symbol === "WFC"){
+            let wfcPaid = 47.62;
+            let wfcPrice = data.price
+            let wfcValue = wfcPrice * 10
+            let wfcGain = wfcValue - (wfcPaid * 10)
+            $("#lastprice-wfc").html(data.price)
+            $("#pricepaid-wfc").html(wfcPaid.toFixed(2))
+            $("#marketvalue-wfc").html(wfcValue.toFixed(2))
+            $("#totalgain-wfc").html(wfcGain.toFixed(2))
+        }
+        else if(data.symbol === "NKE"){
+            let nkePaid = 55.43;
+            let nkePrice = data.price
+            let nkeValue = nkePrice * 10
+            let nkeGain = nkeValue - (nkePaid * 10)
+            $("#lastprice-nke").html(data.price)
+            $("#pricepaid-nke").html(nkePaid.toFixed(2))
+            $("#marketvalue-nke").html(nkeValue.toFixed(2))
+            $("#totalgain-nke").html(nkeGain.toFixed(2))
+
         }
     })
 
