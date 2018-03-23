@@ -15,7 +15,7 @@ body {
 header nav.navbar {
   padding: .8rem 1rem;
   box-shadow: none;
-  background: linear-gradient(to right, #161616, #373737);
+  background: linear-gradient(to right, #0f2456, #546dd0);
 }
 
 .navbar-brand { margin-right: 60px;}
@@ -48,7 +48,7 @@ header .view {
 #user a:hover, header a:hover { color: blue;}
 
 #user {
-	background: linear-gradient(to right, #161616, #373737);
+	background: linear-gradient(to right, #0f2456, #546dd0);
 	padding-top: 100px;
 	padding-bottom: 60px;
 }
@@ -98,7 +98,7 @@ table.table a { margin: 0 .3rem;}
 
 /* ---------- footer ---------- */
 
-footer { background: linear-gradient(to right, #161616, #373737);}
+footer { background: linear-gradient(to right, #0f2456, #546dd0);}
 footer h5 { opacity: .5;}
-footer a, footer p { font-size: 13px; opacity: .5;}
+footer a, footer p { font-size: 13px; opacity: .7;}
 footer a:hover { opacity: 1;}
