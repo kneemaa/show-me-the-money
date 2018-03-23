@@ -124,7 +124,47 @@ const ledger = [
     }
 ]
 
+const allUsers = [
+    {
+        "id": 1,
+        "first_name": "Devin",
+        "last_name": "Thomas",
+        "email": "devin@gmail.com",
+        "account_balance": 10000,
+        "createdAt": "2018-03-22T00:17:42.000Z",
+        "updatedAt": "2018-03-22T00:17:42.000Z"
+    },
+    {
+        "id": 2,
+        "first_name": "Nema",
+        "last_name": "Darban",
+        "email": "nema@gmail.com",
+        "account_balance": 10000,
+        "createdAt": "2018-03-22T00:17:42.000Z",
+        "updatedAt": "2018-03-22T00:17:42.000Z"
+    },
+    {
+        "id": 3,
+        "first_name": "Daphne",
+        "last_name": "Chen",
+        "email": "daphne@gmail.com",
+        "account_balance": 10000,
+        "createdAt": "2018-03-22T00:17:42.000Z",
+        "updatedAt": "2018-03-22T00:17:42.000Z"
+    },
+    {
+        "id": 4,
+        "first_name": "Jeremy",
+        "last_name": "Gruhlkey",
+        "email": "jeremy@gmail.com",
+        "account_balance": 10000,
+        "createdAt": "2018-03-22T00:17:42.000Z",
+        "updatedAt": "2018-03-22T00:17:42.000Z"
+    }
+]
+
 module.exports = {
 	portfolio: portfolio,
 	ledger: ledger,
+    allUsers: allUsers,
 }

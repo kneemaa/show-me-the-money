@@ -16,7 +16,7 @@ describe('API Routes', () => {
 		const actual = await getPortfolio();
 		expect(actual).toEqual(expected)
 	})
-	it('Get Ledger and User information for Daphne Chen', async () => {
+	it('Get Ledger and User information for Daphne Chen (user ID 3)', async () => {
 		const expected = expects.ledger
 		const getLedger = () => {
 			return requestPromise({
@@ -26,6 +26,18 @@ describe('API Routes', () => {
 			})
 		}
 		const actual = await getLedger()
+		expect(actual).toEqual(expected)
+	})
+	it('Get All Users', async () => {
+		const expected = expects.allUsers
+		const getAllUsers = () => {
+			return requestPromise({
+				url: "http://localhost:3000/api/all"
+			}).then(users => {
+				return JSON.parse(users)
+			})
+		}
+		const actual = await getAllUsers()
 		expect(actual).toEqual(expected)
 	})
 })
