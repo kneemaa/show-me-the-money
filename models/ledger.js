@@ -1,5 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
 	var Ledger = sequelize.define("Ledger", {
+		symbol: {
+			type: DataTypes.STRING
+		},
 		purchase_price: {
 			type: DataTypes.INTEGER
 		},
@@ -9,9 +12,6 @@ module.exports = (sequelize, DataTypes) => {
 		is_owned: {
 			type: DataTypes.BOOLEAN
 		},
-		user_id: {
-			type: DataTypes.INTEGER
-		}
 	})
 
 	Ledger.associate = models => {

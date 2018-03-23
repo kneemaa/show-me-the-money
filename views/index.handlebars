@@ -1,5 +1,26 @@
+<<<<<<< HEAD
 
 <!-- user panel --->
+=======
+<!-- user panel -->
+	<div>
+		<script>
+  var lock = new Auth0Lock('aJPXuic5MPSYv35id6DoDxl7ZJJP2rtT', 'devious.auth0.com', {
+    auth: {
+    	domain: 'devious.auth0.com',
+    	audience: 'https://devious.auth0.com/userinfo',
+      redirectUrl: 'http://localhost:3000/callback',
+      responseType: 'code',
+      params: {
+        scope: 'openid profile' // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    }
+  });
+</script>
+<button onclick="lock.show();">Login</button>
+<button onclick="location.href='/logout';">Logout</button>
+	</div>
+>>>>>>> f005b2fac5c83f7ee2051aaadb9aebe595a8e288
   <section id="user" class="white-text">
 	  <div class="container">
 		  <div class="row">
@@ -213,3 +234,4 @@
 		  </form>
 	  </div>
   </section>
+
