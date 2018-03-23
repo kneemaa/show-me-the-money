@@ -4,23 +4,23 @@ function handleLogIn(userEmail){
         method: "GET",
         url: "/api/portfolio/" + 1
     }).then(result => {
-        console.log(result);
+        // console.log(result);
         const unformattedBalance = result[0].account_balance;
-            console.log(unformattedBalance);
+            // console.log(unformattedBalance);
             const formattedBalance = currencyFormatter.format(
                 unformattedBalance, { code: 'USD' });
-            console.log(formattedBalance);
+            // console.log(formattedBalance);
             const userName = result[0].dataValues.first_name +
                 " " + result[0].dataValues.last_name;
-            console.log(userName);
+            // console.log(userName);
             const stockArray = [];            
             const userLedger = result[0].dataValues.Ledgers;
-            console.log(userLedger);
+            // console.log(userLedger);
             for (var i = 0; i < userLedger.length; i++) {
             	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
             	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
             };
-            console.log(stockArray);
+            // console.log(stockArray);
 
        
     
