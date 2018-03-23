@@ -36,9 +36,8 @@ $(document).ready(function(){
 
     // receives portfolio emit from server
     socket.on("portfolio", function(data){
-        console.log(data);
+        // console.log(data);
     })
 
 })
 
-handleLogIn()

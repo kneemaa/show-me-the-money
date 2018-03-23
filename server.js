@@ -61,7 +61,7 @@ app.set("view engine", "handlebars")
 
 const routes = require('./routes/index')
 app.use(routes)
-
+require("./routes/api-routes.js")(app);
 
 db.sequelize.sync({ force: false }).then( () => {
 	const server = app.listen(PORT, () => {
@@ -91,7 +91,7 @@ db.sequelize.sync({ force: false }).then( () => {
                 let data= JSON.parse(message)
                 let symbol = data.symbol;
                 let lastPrice = data.lastSalePrice;
-                console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+                // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
                 socket.emit("portfolio", {description: "price " + lastPrice});
             })
 
@@ -130,7 +130,7 @@ db.sequelize.sync({ force: false }).then( () => {
             let data= JSON.parse(message)
             let symbol = data.symbol;
             let lastPrice = data.lastSalePrice;
-            console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+            // console.log("Symbol: " + symbol + ", Price: " + lastPrice)
             io.sockets.emit("broadcast", {description: "price " + lastPrice});
     })
 

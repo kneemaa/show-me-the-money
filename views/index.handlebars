@@ -60,12 +60,13 @@
 					  <th>Action</th>
 				  </tr>
 			  </thead>
-			  <tbody>
+			  {{!-- <tbody>
 				  {{#each stock_detail}}
 				  <tr>
 					  <td class="text-left">{{stockID}}
 						  <br><span class="my-font-small">{{stockID}}<span>
 						  </td>
+					  <td class="text-left">{{stockID}}<br><span class="my-font-small">{{stockID}}<span></td>
 						  <td>{{quantity}}</td>
 						  <td class="{{stockId}}">{{last_price}}</td>
 						  <td>{{price_paid}}</td>
@@ -78,8 +79,36 @@
 						  </td>
 					  </tr>
 					  {{/each}}
+				  </tbody> --}}
+			  </table>
+	  </div>
+
+	  <!-- market -->
+	  {{!-- <div class="tab-pane fade in show active" id="panel-market" role="tabpanel">
+		  <h3 class="mb-5">Major Index</h3>
+		  <div class="row mb-5">
+			  <div id="chart-market" class="col-6"></div>
+			  <table class="col-6 table table-hover text-center">
+				  <thead>
+					  <tr>
+						  <th class="text-left"></th>
+						  <th>Last</th>
+						  <th>Change</th>
+						  <th>% CHG</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  {{#each market_index}}
+					  <tr>
+						  <td class="text-left">{{name}}</td>
+						  <td>{{last_price}}</td>
+						  <td>{{change}}</td>
+						  <td>{{chg}}</td>
+					  </tr>
+					  {{/each}}
 				  </tbody>
 			  </table>
+		  </div>
 
 			  <h3 class="mb-5 mt-5">Suggested Stocks</h3>
 			  <div class="row card-deck text-center">
@@ -213,6 +242,6 @@
 				  </div>
 			  </div>
 		  </form>
-	  </div>
+	  </div> --}}
   </section>
 

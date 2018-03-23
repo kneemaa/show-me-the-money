@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING
 		},
 		purchase_price: {
-			type: DataTypes.INTEGER
+			type: DataTypes.FLOAT
 		},
 		stock_count: {
 			type: DataTypes.INTEGER
