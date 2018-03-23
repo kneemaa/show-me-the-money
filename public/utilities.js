@@ -2,9 +2,10 @@ function handleLogIn(userEmail){
     // Ajax get for user with userEmail
     $.ajax({
         method: "GET",
-        url: "/api/portfolio/:" + 1
-    }).then(res => {
-        const unformattedBalance = result[0].dataValues.account_balance;
+        url: "/api/portfolio/" + 1
+    }).then(result => {
+        console.log(result);
+        const unformattedBalance = result[0].account_balance;
             console.log(unformattedBalance);
             const formattedBalance = currencyFormatter.format(
                 unformattedBalance, { code: 'USD' });
@@ -26,7 +27,7 @@ function handleLogIn(userEmail){
         // if no user (res) then call createNewUser()
         // if user returned update dom with userInfo (name and money)
         // push stocks to stocks[]
-        updatePortfolio(stocks)
+        // updatePortfolio(stocks)
     });
 }
 
