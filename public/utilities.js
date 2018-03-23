@@ -5,7 +5,7 @@ function handleLogIn(userID){
         method: "GET",
         url: "/api/portfolio/" + userID
     }).then(result => {
-        // console.log(result);
+        console.log(result);
         
         // // const unformattedBalance = result[0].account_balance;
         // //     console.log(unformattedBalance);
@@ -32,6 +32,7 @@ function handleLogIn(userID){
         // updatePortfolio(stocks)
     });
 }
+
 
 
 function createNewUser(){
