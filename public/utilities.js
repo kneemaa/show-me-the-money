@@ -5,7 +5,6 @@ function handleLogIn(userID){
         method: "GET",
         url: "/api/portfolio/" + userID
     }).then(result => {
-        //console.log(result);
         $("#user_email").text(result.user_email);
         $("#user_value").html(result.user_value.toString());
         $("#user_available").html(result.user_available.toString());
@@ -13,13 +12,27 @@ function handleLogIn(userID){
 
         $(".myStocks").empty();
         const stock = result.stock_detail
-        $(".myStocks").append("<thead><tr><th>Symbol</th><th>QTY</th><th>Last Price $</th><th>Price Paid $</th><th>Market Value $</th><th>Total Gain $</th><th>Profit/Loss %</th><th>Action</th></tr></thead><tbody class='playerRankingTable'></tbody>");
+        $(".myStocks").append("<thead><tr><th>Symbol</th><th>QTY</th><th>Last Price $</th><th>Price Paid $</th><th>Market Value $</th><th>Total Gain $</th><th>Profit/Loss %</th><th>Action</th></tr></thead><tbody class='userStocks'></tbody>");
+        for (i = 0; i < stock.length; i++) {
+            $(".userStocks").append(`<tr><td>${stock[i].stockID}</td><td>${stock[i].quantity}</td><td id="last-price-${stock[i].stockID}"></td><td>${stock[i].price_paid}</td><td>${stock[i].market_value}</td><td id="total-gain-${stock[i].stockID}">${stock[i].total_gain}</td><td id="profit-${stock[i].stockID}">${stock[i].profit}</td><td>ACTION</td></tr>`);
+        } 
+
+    });
+
+    $.ajax({
+        method: "GET",
+        url: "/api/ledger/" + userID
+    }).then(result => {
+        console.log(result)
+/*
+        $(".userHistory").empty();
+        const stock = result.stock_detail
+        $(".userHistory").append("<thead><tr><th>Symbol</th><th>QTY</th><th>Last Price $</th><th>Price Paid $</th><th>Market Value $</th><th>Total Gain $</th><th>Profit/Loss %</th><th>Action</th></tr></thead><tbody class='playerRankingTable'></tbody>");
         //console.log(result.stock_detail.length)
         for (i = 0; i < stock.length; i++) {
             $(".playerRankingTable").append(`<tr><td>${stock[i].stockID}</td><td>${stock[i].quantity}</td><td id="last-price-${stock[i].stockID}"></td><td>${stock[i].price_paid}</td><td>${stock[i].market_value}</td><td id="total-gain-${stock[i].stockID}">${stock[i].total_gain}</td><td id="profit-${stock[i].stockID}">${stock[i].profit}</td><td>ACTION</td></tr>`);
-        }
-
-    });
+        }*/
+    })
 }
 
 handleLogIn(1);

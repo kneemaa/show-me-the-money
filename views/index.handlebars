@@ -31,37 +31,6 @@
 		  </div>
 		  <h3 class="mb-5">My Stocks</h3>
 		  <table class="myStocks table table-hover text-center">
-		  	<thead>
-				  <tr>
-					  <th class="text-left">Symbol<br><span class="my-font-small">Company</span></th>
-					  <th>QTY</th>
-					  <th>Last Price $</th>
-					  <th>Price Paid $</th>
-					  <th>Market Value $</th>
-					  <th>Total Gain $</th>
-					  <th>Profit/Loss %</th>
-					  <th>Action</th>
-				  </tr>
-			  </thead>
-			  <tbody>
-			  	{{#each stock_detail}}
-			  	<tr>
-			  		<td class="text-left">{{stockID}}</td>
-					<td>
-						<td>{{quantity}}</td>
-						{{!-- <td class="{{stockId}}">{{last_price}}</td> --}}
-						<td>{{price_paid}}</td>
-						<td>{{market_value}}</td>
-						<td>{{total_gain}}</td>
-						<td>{{profit}}</td>
-						<td>
-							<a class="btn btn-indigo btn-custom-small" href="#0">Chart</a>
-							<a class="btn btn-cyan btn-custom-small" href="#0">Trade</a>
-						</td>
-					</td>
-			  	</tr>
-			  	{{/each}}
-			  </tbody>
 		  </table>
 	  </div>
 
@@ -95,29 +64,13 @@
 	  </div>
 
 	  <!-- history -->
-	  <div class="tab-pane fade" id="panel-history" role="tabpanel">
-		  {{> history}}
-	  </div>
+		{{> history}}
 
 	  <!-- trade -->
-	  <div class="tab-pane fade" id="panel-trade" role="tabpanel">
-		  {{> trade}}
-	  </div>
+		{{> trade}}
 
 	  <!-- search -->
-	  <div class="tab-pane fade" id="panel-search" role="tabpanel">
-		  <h3>Search</h3>
-		  <form id="trade" class="mt-5">
-			  <div class="form-row d-flex align-items-end">
-				  <div class="col-4">
-					  <label for="price" class="my-font-small">Search symbol or company name</label>
-					  <input type="text" class="form-control" name="price" placeholder="eg. GOOG">
-				  </div>
-				  <div class="col-12 mt-5">
-					  <a class="btn btn-indigo" href="#0" style="margin:0">Search</a>
-				  </div>
-			  </div>
-		  </form>
-	  </div>
+		{{> search}}
   </section>
+  {{> footer}}
 

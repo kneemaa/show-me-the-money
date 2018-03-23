@@ -46,12 +46,12 @@ module.exports = function (app) {
                 unformattedBalance, { code: 'USD' });
             const stockArray = [];
             const userLedger = result[0].dataValues.Ledgers;
-            console.log(userLedger);
+            //console.log(userLedger);
 
             var stock_detail = [];
 
             for (var i = 0; i < userLedger.length; i++) {
-                console.log(result[0].dataValues.symbol);
+                /*console.log(result[0].dataValues.symbol);*/
                 stockArray.push(result[0].dataValues.Ledgers[i].symbol);
                 let price_paid = result[0].dataValues.Ledgers[i].purchase_price;
                 let quantity = result[0].dataValues.Ledgers[i].stock_count; 
@@ -79,7 +79,7 @@ module.exports = function (app) {
                 stock_detail: stock_detail
             };
 
-            console.log("3", formattedResult);
+            /*console.log("3", formattedResult);*/
 
             res.json(formattedResult);
 
@@ -96,10 +96,8 @@ module.exports = function (app) {
             include: [db.Ledger]
 
         }).then(function (result) {
-            res.json(result);
-
-            const userLedger = result[0].dataValues.Ledgers;
-            console.log(userLedger);
+            let ledgers = result[0].dataValues.Ledgers
+            res.json(ledgers);
 
         });
     });
