@@ -38,7 +38,7 @@ router.get('/callback',
     failureRedirect: '/failure'
   }),
   (req, res) => {
-    res.redirect(req.session.returnTo || '/user');
+    res.redirect(req.session.returnTo || '/');
   }
 );
 

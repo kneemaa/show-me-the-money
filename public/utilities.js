@@ -5,34 +5,24 @@ function handleLogIn(userID){
         method: "GET",
         url: "/api/portfolio/" + userID
     }).then(result => {
-        // console.log(result);
+        //console.log(result);
+        $("#user_email").text(result.user_email);
+        $("#user_value").html(result.user_value.toString());
+        $("#user_available").html(result.user_available.toString());
         
-        // // const unformattedBalance = result[0].account_balance;
-        // //     console.log(unformattedBalance);
-        // //     const formattedBalance = currencyFormatter.format(
-        // //         unformattedBalance, { code: 'USD' });
-        // //     console.log(formattedBalance);
-        //     const userName = result[0].dataValues.first_name +
-        //         " " + result[0].dataValues.last_name;
-        //     console.log(userName);
-        //     const stockArray = [];            
-        //     const userLedger = result[0].dataValues.Ledgers;
-        //     console.log(userLedger);
-        //     for (var i = 0; i < userLedger.length; i++) {
-        //     	console.log(result[0].dataValues.Ledgers[i].dataValues.symbol);
-        //     	stockArray.push(result[0].dataValues.Ledgers[i].dataValues.symbol);
-        //     };
-        //     console.log(stockArray);
 
-       
-    
-        // if no user (res) then call createNewUser()
-        // if user returned update dom with userInfo (name and money)
-        // push stocks to stocks[]
-        // updatePortfolio(stocks)
+        $(".myStocks").empty();
+        const stock = result.stock_detail
+        $(".myStocks").append("<thead><tr><th>Symbol</th><th>QTY</th><th>Last Price $</th><th>Price Paid $</th><th>Market Value $</th><th>Total Gain $</th><th>Profit/Loss %</th><th>Action</th></tr></thead><tbody class='playerRankingTable'></tbody>");
+        //console.log(result.stock_detail.length)
+        for (i = 0; i < stock.length; i++) {
+            $(".playerRankingTable").append(`<tr><td>${stock[i].stockID}</td><td>${stock[i].quantity}</td><td id="last-price-${stock[i].stockID}"></td><td>${stock[i].price_paid}</td><td>${stock[i].market_value}</td><td id="total-gain-${stock[i].stockID}">${stock[i].total_gain}</td><td id="profit-${stock[i].stockID}">${stock[i].profit}</td><td>ACTION</td></tr>`);
+        }
+
     });
 }
 
+handleLogIn(1);
 
 function createNewUser(){
     // Ajax post to create user in db

@@ -8,19 +8,6 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
 
 
-// app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(bodyParser.json())
-// app.use(express.static("public"))
-
-// const PORT = process.env.PORT || 3000
-
-// db.sequelize.sync({ force: false }).then(() => {
-//     app.listen(PORT, () => {
-//         console.log("App listening on PORT: " + PORT)
-//     })
-// })
-
-
 module.exports = function (app) {
 
     //Create Account/
@@ -53,7 +40,7 @@ module.exports = function (app) {
 
         }).then(function (result) {
             
-            console.log("1!", result);
+            //console.log("1!", result);
             const unformattedBalance = result[0].dataValues.account_balance;
             const formattedBalance = currencyFormatter.format(
                 unformattedBalance, { code: 'USD' });
@@ -66,16 +53,19 @@ module.exports = function (app) {
             for (var i = 0; i < userLedger.length; i++) {
                 console.log(result[0].dataValues.symbol);
                 stockArray.push(result[0].dataValues.Ledgers[i].symbol);
+                let price_paid = result[0].dataValues.Ledgers[i].purchase_price;
+                let quantity = result[0].dataValues.Ledgers[i].stock_count; 
+                let market_value = price_paid * quantity;
                 var thisStock = {
                     stockID: result[0].dataValues.Ledgers[i].symbol,
                     quantity: result[0].dataValues.Ledgers[i].stock_count,
-                    price_paid: result[0].dataValues.Ledgers[i].purchase_price,
-                    market_value: 0,
+                    price_paid: price_paid,
+                    market_value: market_value,
                     total_gain: 0,
                     profit: 0,
                 }
                 stock_detail.push(thisStock);
-                console.log("2", thisStock);
+                //console.log("2", thisStock);
                 // portfolioValue = function(a,b) {                
 
                 // }
@@ -93,7 +83,7 @@ module.exports = function (app) {
 
             res.json(formattedResult);
 
-            res.render("index", { stock_detail:formattedResult })
+            //res.render("index", {user_email: 'nema'})
         });
     });
 
