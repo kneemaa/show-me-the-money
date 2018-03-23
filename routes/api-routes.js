@@ -24,7 +24,9 @@ module.exports = function (app) {
     //Account lookup
     app.get("/api/user/:email", function (req, res) {
         db.Users.findAll({
-            email: req.params.email,
+            where: {
+                email: req.params.email,
+                    }
         }).then(function (result) {
             res.json(result)
         });
@@ -65,11 +67,6 @@ module.exports = function (app) {
                     profit: 0,
                 }
                 stock_detail.push(thisStock);
-                //console.log("2", thisStock);
-                // portfolioValue = function(a,b) {                
-
-                // }
-
             };
 
             const formattedResult = {

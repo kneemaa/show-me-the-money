@@ -3,15 +3,15 @@
 		  <div class="row">
 			  <div class="col-6">
 				  <h3>My Account</h3>
-				  <p id="user_email" class="my-font-small"></p>
+				  <p id="user_email" class="my-font-small">{{user_email}}</p>
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Total Amount</p>
-				<p id="user_value"></p>
+				<p id="user_value">{{user_value}}</p>
 			  </div>
 			  <div class="col-3">
 			  	<p class="my-font-small">Available Amount</p>
-				<p id="user_available"></p>
+				<p id="user_available">{{user_available}}</p>
 			  </div>
 		  </div>
 		  <div class="row tabs-wrapper mt-4">
@@ -31,6 +31,32 @@
 		  </div>
 		  <h3 class="mb-5">My Stocks</h3>
 		  <table class="myStocks table table-hover text-center">
+		  	<thead>
+		  		<tr>
+		  			<th>Symbol</th>
+		  			<th>QTY</th>
+		  			<th>Last Price $</th>
+		  			<th>Price Paid $</th>
+		  			<th>Market Value $</th>
+		  			<th>Total Gain $</th>
+		  			<th>Profit/Loss %</th>
+		  			<th>Action</th>
+		  		</tr>
+		  	</thead>
+		  	<tbody class='userStocks'>
+		  		{{#each stock_detail}}
+		  		<tr>
+		  			<td>{{stockID}}</td>
+		  			<td>{{quantity}}</td>
+		  			<td id="last-price-{{stockID}}"></td>
+		  			<td>{{price_paid}}</td>
+		  			<td>{{market_value}}</td>
+		  			<td id="total-gain-{{stockID}}">{{total_gain}}</td>
+		  			<td id="profit-{{stockID}}">{{profit}}</td>
+		  			<td>ACTION</td>
+		  		</tr>
+		  		{{/each}}
+		  	</tbody>
 		  </table>
 	  </div>
 

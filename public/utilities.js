@@ -1,14 +1,10 @@
-function handleLogIn(userID){
+/*function handleLogIn(userID){
     // Ajax get for user with userEmail
     // console.log(userID, typeof(userID))
     $.ajax({
         method: "GET",
         url: "/api/portfolio/" + userID
     }).then(result => {
-        $("#user_email").text(result.user_email);
-        $("#user_value").html(result.user_value.toString());
-        $("#user_available").html(result.user_available.toString());
-        
 
         $(".myStocks").empty();
         const stock = result.stock_detail
@@ -34,9 +30,9 @@ function handleLogIn(userID){
             $(".ledgerEntry").append(`<tr><td>${dateTrimmed}</td><td>${stock[i].symbol}</td><td>${stock[i].stock_count}</td><td>${stock[i].purchase_price}</td><td>${total}</td><td>Action</td></tr>`);
         }
     })
-}
+}*/
 
-handleLogIn(1);
+/*handleLogIn(1);*/
 
 function createNewUser(){
     // Ajax post to create user in db

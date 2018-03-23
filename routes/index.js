@@ -4,7 +4,12 @@ const router = express.Router();
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn()
 const flash = require('connect-flash')
 const request = require('request')
+const Promise = require('bluebird')
 const requestPromise = require('request-promise')
+/*const exphbs = require('express-handlebars')
+const app = express();
+app.engine("handlebars", exphbs({ defaultLayout: "main"}))
+app.set("view engine", "handlebars")*/
 
 const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
@@ -13,17 +18,68 @@ const env = {
     process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
 };
 
-const checkLoggedIn = (user) => {
-
+const checkLoggedIn = async (user) => {
+  let userInfo
   if (user) {
     console.log(user.nickname)
-/*    requestPromise({
-      method: 'get',
-      url: '/api/user/' + escape("nema.darban")
-    }).then(result => {
-      console.log(result)
-    })*/
+    const lookUp = () => {
+      return requestPromise({
+        method: 'get',
+        url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
+      }).then(result => {
+        result = JSON.parse(result)
+        return result[0].id
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    const id = await lookUp()
+    const portfolio = () => {
+      return requestPromise({
+        method: 'get',
+        url: 'http://localhost:3000/api/portfolio/' + id
+      }).then(result => {
+        return result
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    const ledger = () => {
+      return requestPromise({
+        method: 'get',
+        url: 'http://localhost:3000/api/ledger/' + id
+      }).then(result => {
+        return result
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    const getLedger = await ledger()
+
+    const getPortfolio = await portfolio()
+    const jsonPortfolio = JSON.parse(getPortfolio)
+    let bb = JSON.parse(getLedger)
+    let cc = await new Promise.map(bb, entry => {
+      let cleaned = []
+      let date = entry.createdAt
+      let dateTrimmed = date.substring(0, date.indexOf('T'))
+      let total = entry.stock_count * entry.purchase_price
+      return {
+        id: entry.id,
+        symbol: entry.symbol,
+        stock_count: entry.stock_count,
+        purchase_price: entry.purchase_price,
+        date: dateTrimmed,
+        total_gain: total,
+      }
+    }).then((ledger) => {
+      jsonPortfolio["Ledger"] = ledger
+    })
+     
+    return jsonPortfolio
+    //console.log(b)
   }
+  //console.log(userInfo)
   /*console.log({
     user: user ,
     userProfile: JSON.stringify(user, null, '  ')
@@ -31,10 +87,15 @@ const checkLoggedIn = (user) => {
 }
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   //console.log(req.user);
-  checkLoggedIn(req.user);
-  res.render('index.handlebars');
+  try {
+    const port = await checkLoggedIn(req.user)
+    res.render('index', port);
+  } catch (e) {
+    next(e)
+  }
+  
 });
 
 router.get('/login', passport.authenticate('auth0', {

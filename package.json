@@ -19,6 +19,7 @@
   "homepage": "https://github.com/smalldoorman/show-me-the-money#readme",
   "dependencies": {
     "auth0-lock": "^11.4.0",
+    "bluebird": "^3.5.1",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
