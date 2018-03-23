@@ -3,6 +3,8 @@ const passport = require('passport');
 const router = express.Router();
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn()
 const flash = require('connect-flash')
+const request = require('request')
+const requestPromise = require('request-promise')
 
 const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
@@ -11,9 +13,27 @@ const env = {
     process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
 };
 
+const checkLoggedIn = (user) => {
+
+  if (user) {
+    console.log(user.nickname)
+/*    requestPromise({
+      method: 'get',
+      url: '/api/user/' + escape("nema.darban")
+    }).then(result => {
+      console.log(result)
+    })*/
+  }
+  /*console.log({
+    user: user ,
+    userProfile: JSON.stringify(user, null, '  ')
+  });*/
+}
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  console.log(req.user);
+  //console.log(req.user);
+  checkLoggedIn(req.user);
   res.render('index.handlebars');
 });
 
@@ -42,12 +62,13 @@ router.get('/callback',
   }
 );
 
-router.get('/user', ensureLoggedIn, (req, res, next) => {
+/*router.get('/user', ensureLoggedIn, (req, res, next) => {
+  
   res.json({
     user: req.user ,
     userProfile: JSON.stringify(req.user, null, '  ')
   });
-});
+});*/
 
 
 router.get('/failure', (req, res) => {

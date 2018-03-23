@@ -8,9 +8,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		email: {
 			type: DataTypes.STRING,
-			validate: {
-				isEmail: true
-			}
 		},
 		account_balance: {
 			type: DataTypes.FLOAT,

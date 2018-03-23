@@ -35,6 +35,7 @@
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
     "request": "^2.85.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.37.1",
     "socket.io": "^2.0.4"
   }

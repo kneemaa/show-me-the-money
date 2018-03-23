@@ -23,17 +23,15 @@ function handleLogIn(userID){
         method: "GET",
         url: "/api/ledger/" + userID
     }).then(result => {
-        console.log(result)
 
         $(".userHistory").empty();
         const stock = result
-        $(".userHistory").append("<thead><tr><th>Date</th><th>Symbol</th><th>QTY</th><th>Trade Price $</th><th>Total $</th></tr></thead><tbody class='ledgerEntry'></tbody>");
-        //console.log(result.stock_detail.length)
+        $(".userHistory").append("<thead><tr><th>Date</th><th>Symbol</th><th>QTY</th><th>Trade Price $</th><th>Total $</th><th>Action</th></tr></thead><tbody class='ledgerEntry'></tbody>");
         for (i = 0; i < stock.length; i++) {
             let date = stock[i].createdAt
             let dateTrimmed = date.substring(0, date.indexOf('T'))
             let total = stock[i].stock_count * stock[i].purchase_price
-            $(".ledgerEntry").append(`<tr><td>${dateTrimmed}</td><td>${stock[i].symbol}</td><td>${stock[i].stock_count}</td><td>${stock[i].purchase_price}</td><td>${total}</td></tr>`);
+            $(".ledgerEntry").append(`<tr><td>${dateTrimmed}</td><td>${stock[i].symbol}</td><td>${stock[i].stock_count}</td><td>${stock[i].purchase_price}</td><td>${total}</td><td>Action</td></tr>`);
         }
     })
 }
