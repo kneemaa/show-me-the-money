@@ -1,6 +1,3 @@
-
-var price = [ 120, 118, 119, 117, 119, 121, 122, 121, 123, 120, 118, 119, 117, 119, 121, 122, 121, 123, 120, 118, 119, 117, 119, 121, 122, 121, 123, 120, 121, 123, 121];
-
 var stocks = [
 	{value:335, name:'Stock1'},
 	{value:310, name:'Stock2'},
@@ -10,10 +7,42 @@ var stocks = [
 	{value:1218, name:'Stock6'}
 ]
 
-barChart('chart-stock', 'GOOG', 'Google', price);
-barChart('chart-stock', 'APPL', 'Apple, Inc', price);
 
 pieChart('portfolio', stocks);
+
+// on page load, render bar chart
+var firstStock = $('.btn-chart:nth-of-type(1)')[0];
+var symbol = $(firstStock).attr('symbol');
+renderBarChart(symbol);
+
+// click to switch
+$('.btn-chart').on('click', function(){
+	var symbol = $(this).attr('symbol');
+	renderBarChart(symbol);
+});
+
+function renderBarChart(symbol){
+	var queryURL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + symbol + '&apikey=GNC3G50UKYCQIXVN';
+
+	$.ajax({
+		url: queryURL,
+		method: 'GET'
+	}).done(function(data){
+		var timeSeries = data["Time Series (Daily)"];
+		var dates = Object.keys(timeSeries);
+		var priceArray = [];
+
+		for (var i = 1; i < 32; i++) {
+			var price = timeSeries[dates[i]]['4. close'];
+			priceArray.push(parseFloat(price));
+		}
+
+		// console.log(priceArray);
+		barChart('chart-stock', symbol, priceArray);
+		$('html, body').animate({scrollTop : 240},800);
+	});
+}
+
 
 // pie-chart generator
 function pieChart(canvas, stocks){
@@ -58,7 +87,7 @@ function pieChart(canvas, stocks){
 
 
 // bar chart generator
-function barChart(canvas, symbol, company, price){
+function barChart(canvas, symbol, price){
 	var dom = document.getElementById(canvas);
 	var myChart = echarts.init(dom);
 	var increase = [];
@@ -68,7 +97,8 @@ function barChart(canvas, symbol, company, price){
 
 	function change(){
 		for (var i = 1; i < price.length; i++) {
-			var difference = price[i] - price[i-1];
+			var difference = (price[i] - price[i-1]).toFixed(2);
+			// console.log(difference);
 			if (difference >= 0) {
 				decrease.push('-');
 				increase.push(difference);
@@ -84,7 +114,7 @@ function barChart(canvas, symbol, company, price){
 	var option = {
 		title: {
 			text: symbol,
-			subtext: company,
+			// subtext: company,
 			// sublink: 'https://www.ibm.com/'
 		},
 		tooltip : {
@@ -114,7 +144,7 @@ function barChart(canvas, symbol, company, price){
 			splitLine: {show:false},
 			data:  function (){
 				var list = [];
-				for (var i = 31; i > 1; i--) {
+				for (var i = 31; i > 0; i--) {
 					list.push(moment().subtract(i, 'days').format('l'));
 				}
 				return list;
