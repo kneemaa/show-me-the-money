@@ -11,7 +11,7 @@ body {
 .my-font-small { font-size: 11px; opacity: .6;}
 .form-control, .btn { font-size: 13px; border-radius: 0;}
 
-/* ----------- header ----------- */
+/* ---------- header ----------- */
 
 header nav.navbar {
   padding: .8rem 1rem;

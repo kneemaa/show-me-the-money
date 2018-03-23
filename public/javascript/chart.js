@@ -15,7 +15,7 @@ barChart('chart-stock', 'APPL', 'Apple, Inc', price);
 
 pieChart('portfolio', stocks);
 
-// pie chart generator
+// pie-chart generator
 function pieChart(canvas, stocks){
 	var dom = document.getElementById(canvas);
 	var myChart = echarts.init(dom);
