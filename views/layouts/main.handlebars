@@ -20,9 +20,9 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src = "./utilities.js"></script>
   <script src = "./sockets.js"></script>
-
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
   <script src="https://cdn.auth0.com/js/lock/11.3.1/lock.min.js"></script>
+  <script src="./js/app.js"></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 						  <a class="nav-link" href="/">Home</a>
 					  </li>
 					  <li class="nav-item">
-						  <a class="nav-link" href="/user">My Account</a>
+						  <a class="nav-link" onclick="lock.show();">My Account</a>
 					  </li>
 					  <li class="nav-item">
 						  <a class="nav-link" href="/logout">Logout</a>
