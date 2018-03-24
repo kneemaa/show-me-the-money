@@ -1,27 +1,27 @@
 <div class="tab-pane fade" id="panel-history" role="tabpanel">
-	<h3>Trade History</h3>
-	<table class="userHistory table table-hover mt-5">
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Symbol</th>
-				<th>QTY</th>
-				<th>Trade Price $</th>
-				<th>Total $</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-	  	<tbody class='userStocks'>
-	  		{{#each Ledger}}
-	  		<tr>
-	  			<td>{{date}}</td>
-	  			<td>{{symbol}}</td>
-	  			<td>{{stock_count}}</td>
-	  			<td>{{purchase_price}}</td>
-	  			<td>{{total_gain}}</td>
-	  			<td>Action</td>
-	  		</tr>
-	  		{{/each}}
-	  	</tbody>
-	</table>
-</div>
+		  <h3>Trade History</h3>
+		  <table class="table table-hover mt-5">
+			  <thead>
+				  <tr>
+					  <th>Date</th>
+					  <th>Action</th>
+					  <th>Symbol</th>
+					  <th>QTY</th>
+					  <th>Trade Price $</th>
+					  <th>Total $</th>
+				  </tr>
+			  </thead>
+			  <tbody class='userStocks'>
+		  		{{#each Ledger}}
+		  		<tr>
+		  			<td>{{date}}</td>
+		  			<td>Action</td>
+		  			<td>{{symbol}}</td>
+		  			<td>{{stock_count}}</td>
+		  			<td>{{purchase_price}}</td>
+		  			<td>{{total_gain}}</td>
+		  		</tr>
+		  		{{/each}}
+		  	</tbody>
+		  </table>
+	  </div>

@@ -17,11 +17,12 @@
 		  <div class="row tabs-wrapper mt-4">
 			  {{> navbar}}
 		  </div>
+		  {{> user-panel}}
 	  </div>
   </section>
 
   <section id="content" class="container tab-content card">
-
+	
 	  <!-- portfolio -->
 	  <div class="tab-pane fade in show active" id="panel-portfolio" role="tabpanel">
 		  <h3 class="mb-5">Portfolio</h3>
@@ -53,50 +54,32 @@
 		  			<td>{{market_value}}</td>
 		  			<td id="total-gain-{{stockID}}">{{total_gain}}</td>
 		  			<td id="profit-{{stockID}}">{{profit}}</td>
-		  			<td>ACTION</td>
+		  			<td>
+		  				<a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol={{stockID}}>Chart</a>
+		            	<a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
+		            </td>
 		  		</tr>
 		  		{{/each}}
 		  	</tbody>
 		  </table>
+		  {{> suggestedStock}}
 	  </div>
 
-	  <!-- market -->
-	  <div class="tab-pane fade in show active" id="panel-market" role="tabpanel">
-		  <h3 class="mb-5">Major Index</h3>
-		  <div class="row mb-5">
-			  <div id="chart-market" class="col-6"></div>
-			  <table class="col-6 table table-hover text-center">
-				  <thead>
-					  <tr>
-						  <th class="text-left"></th>
-						  <th>Last</th>
-						  <th>Change</th>
-						  <th>% CHG</th>
-					  </tr>
-				  </thead>
-				  <tbody>
-					  {{#each market_index}}
-					  <tr>
-						  <td class="text-left">{{name}}</td>
-						  <td>{{last_price}}</td>
-						  <td>{{change}}</td>
-						  <td>{{chg}}</td>
-					  </tr>
-					  {{/each}}
-				  </tbody>
-			  </table>
-		  </div>
-			  {{> suggestedStock}}
-	  </div>
-
-	  <!-- history -->
+	<!-- history -->
 		{{> history}}
 
-	  <!-- trade -->
+	<!-- trade -->
 		{{> trade}}
 
-	  <!-- search -->
+	<!-- search -->
 		{{> search}}
+
+	{{!-- suggested stock --}}
+		{{!-- {{> suggestedStock}} --}}
+
+	 
+
+
   </section>
   {{> footer}}
 

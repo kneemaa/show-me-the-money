@@ -44,8 +44,6 @@ function renderBarChart(symbol, div){
 			var price = timeSeries[dates[i]]['4. close'];
 			priceArray.push(parseFloat(price));
 		}
-
-		// console.log(priceArray);
 		barChart(div, symbol, priceArray);
 	});
 }
