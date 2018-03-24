@@ -66,7 +66,7 @@ function confirmBuy() {
     const id = $("#user_email").data("id");
     symbol = $("#buySymbol").val().toUpperCase();
     $.ajax({
-        url: `http://localhost:3000/api/buy/${id}&${symbol}&${purchase_price}&${stockQuantity}`,
+        url: `/api/buy/${id}&${symbol}&${purchase_price}&${stockQuantity}`,
         method: "POST"
     }).done(function (result) {
         console.log(result);
