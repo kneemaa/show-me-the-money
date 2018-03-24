@@ -12,11 +12,7 @@ module.exports = function (app) {
 
     //Create Account/
     app.post("/api/user/", function (req, res) {
-        db.Users.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-        }).then(function (result) {
+        db.Users.create(req.body).then(function (result) {
             res.json(result);
         });
     });

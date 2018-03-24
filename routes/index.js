@@ -16,9 +16,44 @@ const env = {
 
 const checkLoggedIn = async (user) => {
   let userInfo
+  if(!user){
+    return
+  }
+  const lookUp = async (user) => {
+    return requestPromise({
+      method: 'get',
+      url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
+    }).then(result => {
+      console.log(result)
+      if(result === "[]"){
+        const createUser = (user) => {
+          return requestPromise({
+            method: "POST",
+            url: "http://localhost:3000/api/user/",
+            json: {
+                first_name: user.name.givenName,
+                last_name: user.name.familyName,
+                email: `${user.nickname}@gmail.com`,
+            }
+          }).then(result => {
+            return 
+          })
+        }
+        createUser(user)      
+      }
+        result = JSON.parse(result)
+        return result[0].id
+  }).catch(error => {
+      console.log(error)
+    })
+  
+}
+  await lookUp(user)
+  
+
   if (user) {
     console.log(user.nickname)
-    const lookUp = () => {
+    const lookUp = async () => {
       return requestPromise({
         method: 'get',
         url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
@@ -40,7 +75,7 @@ const checkLoggedIn = async (user) => {
         console.log(error)
       })
     }
-    const ledger = () => {
+    const ledger = async () => {
       return requestPromise({
         method: 'get',
         url: 'http://localhost:3000/api/ledger/' + id
@@ -74,13 +109,17 @@ const checkLoggedIn = async (user) => {
     })
      
     return jsonPortfolio
-}}
+}
+}  
+
+  
+
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  console.log(req.user)
+  //console.log(req.user)
   try {
     const portfolio = await checkLoggedIn(req.user)
-    console.log(portfolio)
+    //console.log(portfolio)
     res.render('index', portfolio);
   } catch (e) {
     next(e)
