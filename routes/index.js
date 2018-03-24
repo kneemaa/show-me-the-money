@@ -6,10 +6,6 @@ const flash = require('connect-flash')
 const request = require('request')
 const Promise = require('bluebird')
 const requestPromise = require('request-promise')
-/*const exphbs = require('express-handlebars')
-const app = express();
-app.engine("handlebars", exphbs({ defaultLayout: "main"}))
-app.set("view engine", "handlebars")*/
 
 const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
@@ -77,18 +73,11 @@ const checkLoggedIn = async (user) => {
     })
      
     return jsonPortfolio
-    //console.log(b)
   }
-  //console.log(userInfo)
-  /*console.log({
-    user: user ,
-    userProfile: JSON.stringify(user, null, '  ')
-  });*/
 }
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  //console.log(req.user);
   try {
     const port = await checkLoggedIn(req.user)
     res.render('index', port);
@@ -122,14 +111,6 @@ router.get('/callback',
     res.redirect(req.session.returnTo || '/');
   }
 );
-
-/*router.get('/user', ensureLoggedIn, (req, res, next) => {
-  
-  res.json({
-    user: req.user ,
-    userProfile: JSON.stringify(req.user, null, '  ')
-  });
-});*/
 
 
 router.get('/failure', (req, res) => {
