@@ -46,7 +46,6 @@ function buyStock(symbol) {
         url: queryURL,
         method: 'GET'
     }).done(function (data) {
-        console.log(data);
         if (data['Meta Data'] === undefined) {
             console.log("!error");
             $('#search-keyword').html(searchKey + ' - No stock found. Please enter a correct symbol');
@@ -54,7 +53,6 @@ function buyStock(symbol) {
             $('#search-result table').addClass('show-hide');
         } else {
             var price = data["Time Series (1min)"]["2018-03-23 14:21:00"]["4. close"];
-            console.log(price);
             $("#pricePurchased").val(price);
         }
     });
@@ -77,14 +75,11 @@ window.onkeyup = function (event) {
     // const keyCode = event.keyCode;
     if (event.keyCode === 9) {
         buyStock($("#buySymbol").val())
-        console.log("bananas")
         $("#calcTotal").val(`$${calcAmount()}`)
-        console.log(calcAmount());
     }
 };
 
 $(document).on("click", "#confirmBuy", function () {
-    console.log("BANAANS");
     confirmBuy();
     location.reload();
 });
@@ -108,7 +103,6 @@ function sellStock(symbol) {
     // remove stock from stocks[]
     let spliceIndex = stocks.indexOf(symbol);
     stocks.splice(spliceIndex, 1);
-    console.log(stocks);
     // Ajax call to return the current price of the stock
     //$.
     // do math to add revenue back to user money 

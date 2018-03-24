@@ -24,7 +24,6 @@ const checkLoggedIn = async (user) => {
       method: 'get',
       url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
     }).then(result => {
-      console.log(result)
       if(result === "[]"){
         const createUser = (user) => {
           return requestPromise({
@@ -49,10 +48,7 @@ const checkLoggedIn = async (user) => {
   
 }
   await lookUp(user)
-  
-
   if (user) {
-    console.log(user.nickname)
     const lookUp = async () => {
       return requestPromise({
         method: 'get',
@@ -90,7 +86,6 @@ const checkLoggedIn = async (user) => {
     const getPortfolio = await portfolio()
     const jsonPortfolio = JSON.parse(getPortfolio)
     let parseLedger = JSON.parse(getLedger)
-    console.log(jsonPortfolio)
     let promiseLedger = await new Promise.map(parseLedger, entry => {
       let cleaned = []
       let date = entry.createdAt
@@ -117,10 +112,8 @@ const checkLoggedIn = async (user) => {
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  //console.log(req.user)
   try {
     const portfolio = await checkLoggedIn(req.user)
-    //console.log(portfolio)
     res.render('index', portfolio);
   } catch (e) {
     next(e)
