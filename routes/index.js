@@ -77,6 +77,7 @@ const checkLoggedIn = async (user) => {
 }}
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+  console.log(req.user)
   try {
     const portfolio = await checkLoggedIn(req.user)
     console.log(portfolio)
