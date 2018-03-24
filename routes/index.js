@@ -80,6 +80,7 @@ const checkLoggedIn = async (user) => {
 router.get('/', async (req, res, next) => {
   try {
     const port = await checkLoggedIn(req.user)
+    console.log(port);
     res.render('index', port);
   } catch (e) {
     next(e)
