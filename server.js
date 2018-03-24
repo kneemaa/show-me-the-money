@@ -77,7 +77,7 @@ db.sequelize.sync({ force: false }).then( () => {
       // which then runs the function callback with the paramater
       // socket referring to the socket between the server and THAT client
     io.on('connection', function(socket){
-        console.log("Made socket connection " + socket.id);
+        //console.log("Made socket connection " + socket.id);
         // here an below sets up a new user specific IEX connection 
         // subscribes to stocks from variable
         // and delivers the result to the client
@@ -91,7 +91,7 @@ db.sequelize.sync({ force: false }).then( () => {
                 let data= JSON.parse(message)
                 let symbol = data.symbol;
                 let lastPrice = data.lastSalePrice;
-                console.log("Symbol: " + symbol + ", Price: " + lastPrice)
+                //console.log("Symbol: " + symbol + ", Price: " + lastPrice)
                 socket.emit("portfolio", {symbol: symbol, price: lastPrice});
             })
 
@@ -121,7 +121,7 @@ db.sequelize.sync({ force: false }).then( () => {
 
 
         socket.on('disconnect', function(){
-    		console.log('user disconnected');
+    		//console.log('user disconnected');
     		iex.close();
 
         });
