@@ -106,6 +106,7 @@ const checkLoggedIn = async (user) => {
       }
     }).then((ledger) => {
       jsonPortfolio["Ledger"] = ledger
+      jsonPortfolio["id"] = id
     })
      
     return jsonPortfolio
