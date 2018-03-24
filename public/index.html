@@ -35,8 +35,8 @@
 
 			  <div class="collapse navbar-collapse justify-content-between" id="menubar">
 				  <form class="form-inline md-form form-sm">
-					  <a href="#"><i class="fa fa-search white-text mr-3" aria-hidden="true"></i></a>
-					  <input class="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search">
+					  <a href="#" id="menu-search"><i class="fa fa-search white-text mr-3" aria-hidden="true"></i></a>
+					  <input id="menu-search-input" class="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search">
 				  </form>
 
 				  <ul class="navbar-nav">
@@ -74,16 +74,16 @@
 		  </div>
 		  <div class="row tabs-wrapper mt-4">
 			  <ul class="nav classic-tabs text-center" role="tablist">
-				  <li class="nav-item">
+				  <li class="nav-item nav-tab">
 					  <a class="my-font-small nav-link waves-light active" data-toggle="tab" href="#panel-portfolio" role="tab"><i class="fa fa-user fa-2x" aria-hidden="true"></i><br>Portfolio</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-tab">
 					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-history" role="tab"><i class="fa fa-history fa-2x" aria-hidden="true"></i><br>History</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-tab">
 					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-trade" role="tab"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><br>Trade</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-tab search-nav">
 					  <a class="my-font-small nav-link waves-light" data-toggle="tab" href="#panel-search" role="tab"><i class="fa fa-search fa-2x" aria-hidden="true"></i><br>Search</a>
 				  </li>
 			  </ul>
@@ -116,7 +116,7 @@
 		    </thead>
 		    <tbody>
 		      <tr>
-		        <td class="text-left">WFC</td>
+		        <td class="text-left">AAPL</td>
 		          <td>10</td>
 		          <td>0.00</td>
 		          <td>0.00</td>
@@ -124,7 +124,7 @@
 		          <td>0.00</td>
 		          <td>%</td>
 		          <td>
-		            <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="WFC">Chart</a>
+		            <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="AAPL">Chart</a>
 		            <a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
 		          </td>
 		        </tr>
@@ -290,14 +290,28 @@
 	  <!-- search -->
 	  <div class="tab-pane fade" id="panel-search" role="tabpanel">
 		  <h3>Search</h3>
-		  <form id="trade" class="mt-5">
+		  <div class="show-hide" id="search-result">
+			<p>Key: <span id="search-keyword">AAPL</span></p>
+			<table class="table table-hover mt-5 show-hide">
+			  <thead>
+				  <tr>
+					  <th>Symbol</th>
+					  <th>Price $</th>
+					  <th>Action</th>
+				  </tr>
+			  </thead>
+			  <tbody></tbody>
+		  </table>
+		  <div id="result-chart" class="col-8 show-hide mb-5"></div>
+		  </div>
+		  <form class="mt-5">
 			  <div class="form-row d-flex align-items-end">
 				  <div class="col-4">
-					  <label for="price" class="my-font-small">Search symbol or company name</label>
-					  <input type="text" class="form-control" name="price" placeholder="eg. GOOG">
+					  <label for="price" class="my-font-small">Enter Symbol</label>
+					  <input id="search-input" type="text" class="form-control" name="price" placeholder="eg. GOOG">
 				  </div>
 				  <div class="col-12 mt-5">
-					  <a class="btn btn-indigo" href="#0" style="margin:0">Search</a>
+					  <a id="search-btn" class="btn btn-indigo" href="#0" style="margin:0">Search</a>
 				  </div>
 			  </div>
 		  </form>
@@ -352,5 +366,6 @@
 
   <!-- Custom JavaScript -->
   <script src="javascript/chart.js"></script>
+  <script src="javascript/app.js"></script>
 </body>
 </html>

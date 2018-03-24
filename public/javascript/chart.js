@@ -13,15 +13,23 @@ pieChart('portfolio', stocks);
 // on page load, render bar chart
 var firstStock = $('.btn-chart:nth-of-type(1)')[0];
 var symbol = $(firstStock).attr('symbol');
-renderBarChart(symbol);
+renderBarChart(symbol, 'chart-stock');
 
-// click to switch
-$('.btn-chart').on('click', function(){
+// click to switch stock
+$('#panel-portfolio .btn-chart').on('click', function(){
 	var symbol = $(this).attr('symbol');
-	renderBarChart(symbol);
+	renderBarChart(symbol, 'chart-stock');
+	$('html, body').animate({scrollTop : 240},800);
 });
 
-function renderBarChart(symbol){
+// search
+$(document).on('click', '#panel-search .btn-chart', function(){
+	var symbol = $(this).attr('symbol');
+	$('#result-chart').toggleClass('show-hide');
+	renderBarChart(symbol, 'result-chart');
+});
+
+function renderBarChart(symbol, div){
 	var queryURL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + symbol + '&apikey=GNC3G50UKYCQIXVN';
 
 	$.ajax({
@@ -38,8 +46,7 @@ function renderBarChart(symbol){
 		}
 
 		// console.log(priceArray);
-		barChart('chart-stock', symbol, priceArray);
-		$('html, body').animate({scrollTop : 240},800);
+		barChart(div, symbol, priceArray);
 	});
 }
 

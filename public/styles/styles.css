@@ -88,6 +88,8 @@ header .view {
 #panel-portfolio .suggested .fa.fa-arrow-circle-up { color: green;}
 #panel-portfolio .suggested .fa.fa-arrow-circle-down { color: red;}
 
+.show-hide { display: none; }
+
 /* ---------- table ---------- */
 
 .table td, .table thead th { vertical-align: middle;}
@@ -103,7 +105,7 @@ table.table a { margin: 0 .3rem;}
 
 /* ---------- diagrams ---------- */
 
-#chart-stock, #portfolio, #chart-market { height: 300px;}
+#chart-stock, #portfolio, #result-chart { height: 300px;}
 
 /* ---------- footer ---------- */
 
