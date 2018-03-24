@@ -67,22 +67,9 @@ module.exports = function (app) {
                     profit: 0,
                 }
                 stock_detail.push(thisStock);
-            };
 
-            const formattedResult = {
-                user_email: result[0].dataValues.email,
-                user_value: 0,
-                user_available: formattedBalance,
-                stock_detail: stock_detail
-            };
-
-            /*console.log("3", formattedResult);*/
-
-            res.json(formattedResult);
-
-            //res.render("index", {user_email: 'nema'})
-        });
-    });
+                //$("#username").text(result[0].dataValues.email)
+    };
 
     //User Ledger
     app.get("/api/ledger/:id", function (req, res) {
@@ -140,4 +127,5 @@ module.exports = function (app) {
         });
     });
 
-}; //module.exports close
+}); //module.exports close
+}

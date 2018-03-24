@@ -1,5 +1,4 @@
 
-
 function createNewUser(){
     // Ajax post to create user in db
     $.ajax({
@@ -23,7 +22,7 @@ function searchStock(){
     }).then((res) => {
         // updates dom with return info
     })
-    
+
 }
 
 function buyStock(symbol){
@@ -38,12 +37,12 @@ function buyStock(symbol){
     // })
 
     // do math to remove total cost from user money
-    
+
     // update DOM
 
     // call updatePortfolio()
     updatePortfolio(stocks)
-    
+
 }
 
 function sellStock(symbol){
