@@ -1,4 +1,4 @@
-USE Stocks;
+USE Stocks; 
 
 INSERT INTO Users (first_name,last_name,email,account_balance,createdAt,updatedAt) VALUES ('Devin','Thomas','dthomase30@gmail.com',10000,'2018-03-22T00:17:42','2018-03-22T00:17:42');
 INSERT INTO Users (first_name,last_name,email,account_balance,createdAt,updatedAt) VALUES ('Nema','Darban','nema.darban@gmail.com',10000,'2018-03-22T00:17:42','2018-03-22T00:17:42');
