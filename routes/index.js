@@ -54,8 +54,9 @@ const checkLoggedIn = async (user) => {
 
     const getPortfolio = await portfolio()
     const jsonPortfolio = JSON.parse(getPortfolio)
-    let bb = JSON.parse(getLedger)
-    let cc = await new Promise.map(bb, entry => {
+    let parseLedger = JSON.parse(getLedger)
+    console.log(jsonPortfolio)
+    let promiseLedger = await new Promise.map(parseLedger, entry => {
       let cleaned = []
       let date = entry.createdAt
       let dateTrimmed = date.substring(0, date.indexOf('T'))
@@ -73,15 +74,13 @@ const checkLoggedIn = async (user) => {
     })
      
     return jsonPortfolio
-  }
-}
-
+}}
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   try {
-    const port = await checkLoggedIn(req.user)
-    console.log(port);
-    res.render('index', port);
+    const portfolio = await checkLoggedIn(req.user)
+    console.log(portfolio)
+    res.render('index', portfolio);
   } catch (e) {
     next(e)
   }
