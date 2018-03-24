@@ -4,18 +4,18 @@
 			  <div class="form-row d-flex align-items-end">
 				  <div class="col">
 					  <label for="action" class="my-font-small">Action</label>
-					  <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="Buy/Sell">
-					  <div class="dropdown-menu col">
-						  <a class="dropdown-item" href="#">Buy</a>
+					  <input type="text" class="form-control dropdown-toggle" data-toggle="" aria-haspopup="true" aria-expanded="false" name="action" placeholder="Buy">
+					  <div class="">
+						  {{!-- <a class="dropdown-item" href="#">Buy</a>
 						  <a class="dropdown-item" href="#">Sell</a>
 						  <a class="dropdown-item" href="#">Something else</a>
 						  <div class="dropdown-divider"></div>
-						  <a class="dropdown-item" href="#">Separated link</a>
+						  <a class="dropdown-item" href="#">Separated link</a> --}}
 					  </div>
 				  </div>
 				  <div class="col">
 					  <label for="action" class="my-font-small">Symbol</label>
-					  <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="eg. GOOG">
+					  <input id="buySymbol" type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="action" placeholder="eg. GOOG">
 					  <div class="dropdown-menu col">
 						  <a class="dropdown-item" href="#">IBM</a>
 						  <a class="dropdown-item" href="#">GOOG</a>
@@ -27,18 +27,18 @@
 				  </div>
 				  <div class="col">
 					  <label for="price" class="my-font-small">Price $</label>
-					  <input type="text" class="form-control" name="price" placeholder="$0.00">
+					  <input id="pricePurchased" type="text" class="form-control" name="price" placeholder="$0.00">
 				  </div>
 				  <div class="col">
 					  <label for="qty" class="my-font-small">QTY</label>
-					  <input type="text" class="form-control" name="qty" placeholder="QTY">
+					  <input id="stockQuantity" type="text" class="form-control" name="qty" placeholder="QTY">
 				  </div>
 				  <div class="col">
 					  <label for="total" class="my-font-small">Total</label>
-					  <input type="text" class="form-control" name="total" placeholder="$0.00">
+					  <input id="calcTotal" type="text" class="form-control" name="total" placeholder="$0.00">
 				  </div>
 				  <div class="col-12 mt-5">
-					  <a class="btn btn-indigo" href="#0" style="margin:0">Confirm</a>
+					  <a id="confirmBuy" class="btn btn-indigo" href="#0" style="margin:0">Confirm</a>
 				  </div>
 			  </div>
 		  </form>

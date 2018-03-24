@@ -101,11 +101,11 @@ module.exports = function (app) {
     });
 
     //Buy Route
-    app.post("/api/buy/:id&:symbol&:purchase_price", function (req, res) {
+    app.post("/api/buy/:id&:symbol&:purchase_price&:stock_count", function (req, res) {
         db.Ledger.create({
             symbol: req.params.symbol,
             purchase_price: req.params.purchase_price,
-            stock_count: 5,
+            stock_count: req.params.stock_count,
             is_owned: true,
             UserId: req.params.id,
 
