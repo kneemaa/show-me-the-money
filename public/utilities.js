@@ -64,7 +64,7 @@ function confirmBuy() {
     purchase_price = Number($("#pricePurchased").val());
     stockQuantity = Number($("#stockQuantity").val());
     const id = $("#user_email").data("id");
-    symbol = $("#buySymbol").val();
+    symbol = $("#buySymbol").val().toUpperCase();
     $.ajax({
         url: `http://localhost:3000/api/buy/${id}&${symbol}&${purchase_price}&${stockQuantity}`,
         method: "POST"
@@ -86,6 +86,7 @@ window.onkeyup = function (event) {
 $(document).on("click", "#confirmBuy", function () {
     console.log("BANAANS");
     confirmBuy();
+    location.reload();
 });
 
 // function PresTab(e)

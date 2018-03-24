@@ -46,6 +46,12 @@ function searchStock(inputId){
 			$('#search-result table').addClass('show-hide');
 		} else {
 			var today = moment().format('YYYY-MM-DD');
+			if (data["Time Series (Daily)"][today] === undefined) {
+				today = moment().subtract(1, 'days').format('YYYY-MM-DD');
+				if (data["Time Series (Daily)"][today] === undefined) {
+					today = moment().subtract(2, 'days').format('YYYY-MM-DD');
+				}
+			}
 			var price = parseFloat(data["Time Series (Daily)"][today]['1. open']);
 			var symbol = data['Meta Data']['2. Symbol'].toUpperCase();
 
