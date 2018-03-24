@@ -96,9 +96,9 @@ db.sequelize.sync({ force: false }).then( () => {
             })
 
             //connect to the channel, and subscribe to the stocks sent in user
-/*
+
             iex.on("connect", () => {
-              iex.emit("subscribe", "WFC,NKE")
+              iex.emit("subscribe", "aig,fb,nke")
                 // iex.emit("subscribe", stocks.join(",")) //will be dynamic data from db
                 // below was hard coded practice data 
                 // var newData = {
@@ -109,7 +109,7 @@ db.sequelize.sync({ force: false }).then( () => {
                 // setInterval(() => {
                 //     socket.emit("newData", newData)
                 // }, 3000);
-            })*/
+            })
 
             // iex.on("message", message => {
             //     console.log(message)

@@ -33,6 +33,7 @@ module.exports = function (app) {
         db.Users.findAll({
             where: {
                 id: req.params.id,
+                
             },
             include: [db.Ledger]
 
