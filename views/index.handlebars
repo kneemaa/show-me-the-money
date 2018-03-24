@@ -1,1 +1,86 @@
-<h1>Hello World</h1>
+  <section id="user" class="white-text">
+	  <div class="container">
+		  <div class="row">
+			  <div class="col-6">
+				  <h3>My Account</h3>
+				  <p id="user_email" data-id={{id}} class="my-font-small">{{user_email}}</p>
+			  </div>
+			  <div class="col-3">
+			  	<p class="my-font-small">Total Amount</p>
+				<p id="user_value">{{user_value}}</p>
+			  </div>
+			  <div class="col-3">
+			  	<p class="my-font-small">Available Amount</p>
+				<p id="user_available">{{user_available}}</p>
+			  </div>
+		  </div>
+		  <div class="row tabs-wrapper mt-4">
+			  {{> navbar}}
+		  </div>
+		  {{> user-panel}}
+	  </div>
+  </section>
+
+  <section id="content" class="container tab-content card">
+	
+	  <!-- portfolio -->
+	  <div class="tab-pane fade in show active" id="panel-portfolio" role="tabpanel">
+		{{#if user_email}}
+		  <h3 class="mb-5">Portfolio</h3>
+		  <div class="row mb-5">
+			  <div id="chart-stock" class="col-8"></div>
+			  <div id="portfolio" class="col-4"></div>
+		  </div>
+		  <h3 class="mb-5">My Stocks</h3>
+		  <table class="myStocks table table-hover text-center">
+		  	<thead>
+		  		<tr>
+		  			<th>Symbol</th>
+		  			<th>QTY</th>
+		  			<th>Last Price $</th>
+		  			<th>Price Paid $</th>
+		  			<th>Market Value $</th>
+		  			<th>Total Gain $</th>
+		  			<th>Profit/Loss %</th>
+		  			<th>Action</th>
+		  		</tr>
+		  	</thead>
+		  	<tbody class='userStocks'>
+		  		{{#each stock_detail}}
+		  		<tr>
+		  			<td>{{stockID}}</td>
+		  			<td>{{quantity}}</td>
+		  			<td id="last-price-{{stockID}}"></td>
+		  			<td>{{price_paid}}</td>
+		  			<td>{{market_value}}</td>
+		  			<td id="total-gain-{{stockID}}">{{total_gain}}</td>
+		  			<td id="profit-{{stockID}}">{{profit}}</td>
+		  			<td>
+		  				<a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol={{stockID}}>Chart</a>
+		            	<a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
+		            </td>
+		  		</tr>
+		  		{{/each}}
+		  	</tbody>
+		  </table>
+		  {{/if}}
+		  {{> suggestedStock}}
+	  </div>
+
+ 	<!-- history -->
+ 		{{> history}}
+ 
+ 	<!-- trade -->
+ 		{{> trade}}
+ 
+ 	<!-- search -->
+ 		{{> search}}
+ 
+ 	{{!-- suggested stock --}}
+ 		{{!-- {{> suggestedStock}} --}}
+ 
+ 	 
+ 
+  </section>
+  {{> footer}}
+
