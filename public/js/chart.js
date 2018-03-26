@@ -51,11 +51,8 @@ function renderBarChart(symbol, div){
 			var price = timeSeries[dates[i]]['4. close'];
 			priceArray.push(parseFloat(price));
 		}
-<<<<<<< HEAD:public/javascript/chart.js
 
 		// console.log(priceArray);
-=======
->>>>>>> master:public/js/chart.js
 		barChart(div, symbol, priceArray);
 	});
 }
@@ -115,10 +112,8 @@ function barChart(canvas, symbol, price){
 	function change(){
 		for (var i = 1; i < price.length; i++) {
 			var difference = (price[i] - price[i-1]).toFixed(2);
-<<<<<<< HEAD:public/javascript/chart.js
 			// console.log(difference);
-=======
->>>>>>> master:public/js/chart.js
+
 			if (difference >= 0) {
 				decrease.push('-');
 				increase.push(difference);

@@ -35,17 +35,17 @@ const checkLoggedIn = async (user) => {
                 email: `${user.nickname}@gmail.com`,
             }
           }).then(result => {
-            return 
+            return
           })
         }
-        createUser(user)      
+        createUser(user)
       }
         result = JSON.parse(result)
         return result[0].id
   }).catch(error => {
       console.log(error)
     })
-  
+
 }
   await lookUp(user)
   if (user) {
@@ -103,12 +103,12 @@ const checkLoggedIn = async (user) => {
       jsonPortfolio["Ledger"] = ledger
       jsonPortfolio["id"] = id
     })
-     
+
     return jsonPortfolio
 }
-}  
+}
 
-  
+
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -118,7 +118,7 @@ router.get('/', async (req, res, next) => {
   } catch (e) {
     next(e)
   }
-  
+
 });
 
 router.get('/login', passport.authenticate('auth0', {
