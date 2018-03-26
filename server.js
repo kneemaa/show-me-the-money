@@ -20,14 +20,16 @@ const PORT = process.env.PORT || 3000
 if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_CLIENT_ID) {
   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_CLIENT_ID in your .env file';
 }
-
+process.on('uncaughtException', err => {
+    console.error(err)
+})
 const strategy = new Auth0Strategy(
 	{
 		domain: process.env.AUTH0_DOMAIN,
 		clientID: process.env.AUTH0_CLIENT_ID,
 		clientSecret: process.env.AUTH0_CLIENT_SECRET,
 		callbackURL:
-			process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'	
+			process.env.AUTH0_CALLBACK_URL + '/callback' || 'http://localhost:3000/callback'	
 	},
 	(accessToken, refreshToken, extraParams, profile, done) => {
 		return done(null, profile)
