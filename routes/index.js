@@ -11,7 +11,7 @@ const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
   AUTH0_CALLBACK_URL:
-    process.env.AUTH0_CALLBACK_URL + '/callback' || 'http://localhost:3000/callback'
+    (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + '/callback' || 'http://localhost:3000/callback'
 };
 
 const checkLoggedIn = async (user) => {
@@ -22,13 +22,13 @@ const checkLoggedIn = async (user) => {
   const lookUp = async (user) => {
     return requestPromise({
       method: 'get',
-      url: process.env.AUTH0_CALLBACK_URL + '/api/user/' + user.nickname + "@gmail.com"
+      url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + '/api/user/' + user.nickname + "@gmail.com"
     }).then(result => {
       if(result === "[]"){
         const createUser = (user) => {
           return requestPromise({
             method: "POST",
-            url: process.env.AUTH0_CALLBACK_URL + "/api/user/",
+            url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + "/api/user/",
             json: {
                 first_name: user.name.givenName,
                 last_name: user.name.familyName,
@@ -52,7 +52,7 @@ const checkLoggedIn = async (user) => {
     const lookUp = async () => {
       return requestPromise({
         method: 'get',
-        url: process.env.AUTH0_CALLBACK_URL + '/api/user/' + user.nickname + "@gmail.com"
+        url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + '/api/user/' + user.nickname + "@gmail.com"
       }).then(result => {
         result = JSON.parse(result)
         return result[0].id
@@ -64,7 +64,7 @@ const checkLoggedIn = async (user) => {
     const portfolio = () => {
       return requestPromise({
         method: 'get',
-        url: process.env.AUTH0_CALLBACK_URL + '/api/portfolio/' + id
+        url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + '/api/portfolio/' + id
       }).then(result => {
         return result
       }).catch(error => {
@@ -74,7 +74,7 @@ const checkLoggedIn = async (user) => {
     const ledger = async () => {
       return requestPromise({
         method: 'get',
-        url: process.env.AUTH0_CALLBACK_URL + '/api/ledger/' + id
+        url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000') + '/api/ledger/' + id
       }).then(result => {
         return result
       }).catch(error => {
