@@ -3,7 +3,7 @@ function createNewUser() {
     // Ajax post to create user in db
     $.ajax({
         method: "POST",
-        url: (process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback') +"/api/...:" + userEmail
+        url: (process.env.AUTH0_CALLBACK_URL + '/callback' || 'http://localhost:3000/callback') +"/api/...:" + userEmail
     }).then(
         // update dom with user info returned (name and money)
     )

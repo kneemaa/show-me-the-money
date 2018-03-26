@@ -4,8 +4,7 @@ $(document).ready(function(){
     // Make connection
     // this 'socket' is a separate frontend socket variable
     // and not connected to the one in server on the backend
-    var socket = io('http://localhost:3000/callback');
-
+    var socket = io(window.location.origin + '/callback' || 'http://localhost:3000/callback');
     var userID = faker.random.uuid
     var user = {
         id: userID,
