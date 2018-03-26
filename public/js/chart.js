@@ -103,7 +103,6 @@ function barChart(canvas, symbol, price){
 	function change(){
 		for (var i = 1; i < price.length; i++) {
 			var difference = (price[i] - price[i-1]).toFixed(2);
-			// console.log(difference);
 			if (difference >= 0) {
 				decrease.push('-');
 				increase.push(difference);

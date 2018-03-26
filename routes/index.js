@@ -22,14 +22,13 @@ const checkLoggedIn = async (user) => {
   const lookUp = async (user) => {
     return requestPromise({
       method: 'get',
-      url: env.AUTH0_CALLBACK_URL+'/api/user/' + user.nickname + "@gmail.com"
+      url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
     }).then(result => {
-      console.log(result)
       if(result === "[]"){
         const createUser = (user) => {
           return requestPromise({
             method: "POST",
-            url: "/api/user/",
+            url: "http://localhost:3000/api/user/",
             json: {
                 first_name: user.name.givenName,
                 last_name: user.name.familyName,
@@ -49,14 +48,11 @@ const checkLoggedIn = async (user) => {
   
 }
   await lookUp(user)
-  
-
   if (user) {
-    console.log(user.nickname)
     const lookUp = async () => {
       return requestPromise({
         method: 'get',
-        url: env.AUTH0_CALLBACK_URL+'/api/user/' + user.nickname + "@gmail.com"
+        url: 'http://localhost:3000/api/user/' + user.nickname + "@gmail.com"
       }).then(result => {
         result = JSON.parse(result)
         return result[0].id
@@ -68,7 +64,7 @@ const checkLoggedIn = async (user) => {
     const portfolio = () => {
       return requestPromise({
         method: 'get',
-        url: env.AUTH0_CALLBACK_URL+'/api/portfolio/' + id
+        url: 'http://localhost:3000/api/portfolio/' + id
       }).then(result => {
         return result
       }).catch(error => {
@@ -78,7 +74,7 @@ const checkLoggedIn = async (user) => {
     const ledger = async () => {
       return requestPromise({
         method: 'get',
-        url: env.AUTH0_CALLBACK_URL+'/api/ledger/' + id
+        url: 'http://localhost:3000/api/ledger/' + id
       }).then(result => {
         return result
       }).catch(error => {
@@ -90,7 +86,6 @@ const checkLoggedIn = async (user) => {
     const getPortfolio = await portfolio()
     const jsonPortfolio = JSON.parse(getPortfolio)
     let parseLedger = JSON.parse(getLedger)
-    console.log(jsonPortfolio)
     let promiseLedger = await new Promise.map(parseLedger, entry => {
       let cleaned = []
       let date = entry.createdAt
@@ -117,10 +112,8 @@ const checkLoggedIn = async (user) => {
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  //console.log(req.user)
   try {
     const portfolio = await checkLoggedIn(req.user)
-    //console.log(portfolio)
     res.render('index', portfolio);
   } catch (e) {
     next(e)
