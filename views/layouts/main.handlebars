@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>My Account</title>
-  <link rel="shortcut icon" href="images/favicon.png">
+  <title>Stock</title>
+  <link rel="shortcut icon" href="images/favicon.ico">
 
   <!-- Font Awesome --->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +16,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
   <!-- custom css -->
   <link rel="stylesheet" href="styles/styles.css">
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src = "./utilities.js"></script>
-  <script src = "./sockets.js"></script>
-
+  <script src="./utilities.js"></script>
+  <script src="./sockets.js"></script>
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
   <script src="https://cdn.auth0.com/js/lock/11.3.1/lock.min.js"></script>
 </head>
@@ -34,25 +33,6 @@
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 			  </button>
-
-			  <div class="collapse navbar-collapse justify-content-between" id="menubar">
-				  <form class="form-inline md-form form-sm">
-					  <a href="#"><i class="fa fa-search white-text mr-3" aria-hidden="true"></i></a>
-					  <input class="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search">
-				  </form>
-
-				  <ul class="navbar-nav">
-					  <li class="nav-item">
-						  <a class="nav-link" href="/">Home</a>
-					  </li>
-					  <li class="nav-item">
-						  <a class="nav-link" href="/user">My Account</a>
-					  </li>
-					  <li class="nav-item">
-						  <a class="nav-link" href="/logout">Logout</a>
-					  </li>
-				  </ul>
-			  </div>
 		  </div>
 	  </nav>
   </header>
@@ -60,37 +40,6 @@
   {{{ body }}}
 
   <!--footer-->
-  <footer class="page-footer font-small pt-5 mt-4">
-    <div class="container text-md-left">
-      <div class="row">
-        <div class="col-md-8">
-          <h5>Site Name</h5>
-          <p class="pr-5">Lorem ipsum dolor sit amet, mandamus consequuntur pri at, augue tollit accommodare duo at. In posse semper quo, brute munere mnesarchum ad his. Oportere consulatu qui eu. Ad modus porro mundi per. </p>
-        </div>
-        <div class="col-md-4">
-          <h5>References</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">MDBootstrap</a>
-            </li>
-            <li>
-              <a href="#!">eCharts</a>
-            </li>
-            <li>
-              <a href="#!">WebSocket</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-12 pb-5">
-          <hr style="background-color:grey">
-          <a href="https://github.com/smalldoorman/show-me-the-money">Github Repository</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -106,7 +55,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 
   <!-- Custom JavaScript -->
-  <script src="javascript/app.js"></script>
-  <script src="javascript/chart.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chart.js"></script>
 </body>
 </html>

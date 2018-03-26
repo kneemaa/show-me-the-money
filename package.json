@@ -2,7 +2,7 @@
   "name": "show-me-the-money",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/smalldoorman/show-me-the-money#readme",
   "dependencies": {
     "auth0-lock": "^11.4.0",
+    "bluebird": "^3.5.1",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
@@ -35,6 +36,7 @@
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
     "request": "^2.85.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.37.1",
     "socket.io": "^2.0.4"
   }
