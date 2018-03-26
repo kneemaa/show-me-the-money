@@ -20,7 +20,9 @@ const PORT = process.env.PORT || 3000
 if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_CLIENT_ID) {
   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_CLIENT_ID in your .env file';
 }
-
+process.on('uncaughtException', err => {
+    console.error(err)
+})
 const strategy = new Auth0Strategy(
 	{
 		domain: process.env.AUTH0_DOMAIN,
