@@ -35,8 +35,8 @@
 
 			  <div class="collapse navbar-collapse justify-content-between" id="menubar">
 				  <form class="form-inline md-form form-sm">
-					  <a href="#" id="menu-search"><i class="fa fa-search white-text mr-3" aria-hidden="true"></i></a>
 					  <input id="menu-search-input" class="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search">
+					  <a href="#" id="menu-search"><i class="fa fa-search white-text ml-3" aria-hidden="true"></i></a>
 				  </form>
 
 				  <ul class="navbar-nav">
@@ -114,30 +114,56 @@
 		        <th>Action</th>
 		      </tr>
 		    </thead>
-		    <tbody>
+		    <tbody id="my-stocks">
 		      <tr>
-		        <td class="text-left">AAPL</td>
+		        <td class="text-left symbol">AAPL</td>
 		          <td>10</td>
-		          <td>0.00</td>
-		          <td>0.00</td>
-		          <td>0.00</td>
-		          <td>0.00</td>
-		          <td>%</td>
+		          <td id="lastprice-aapl">0.00</td>
+		          <td id="pricepaid-aapl">0.00</td>
+		          <td id="marketvalue-aapl" class="marketvalue">800.00</td>
+		          <td id="totalgain-aapl">0.00</td>
+		          <td id="percentchange-aapl">%</td>
 		          <td>
 		            <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="AAPL">Chart</a>
 		            <a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
 		          </td>
 		        </tr>
 		        <tr>
-		          <td class="text-left">NKE</td>
+		          <td class="text-left symbol">NKE</td>
 		            <td>20</td>
-		            <td>0.00</td>
-		            <td>0.00</td>
-		            <td>0.00</td>
-		            <td>0.00</td>
-		            <td>%</td>
+		            <td id="lastprice-nke">0.00</td>
+		            <td id="pricepaid-nke">0.00</td>
+		            <td id="marketvalue-nke" class="marketvalue">1200.00</td>
+		            <td id="totalgain-nke">0.00</td>
+		            <td id="percentchange-nke">%</td>
 		            <td>
 		              <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="NKE">Chart</a>
+		              <a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
+		            </td>
+		        </tr>
+				<tr>
+		          <td class="text-left symbol">FB</td>
+		            <td>20</td>
+		            <td id="lastprice-fb">0.00</td>
+		            <td id="pricepaid-fb">0.00</td>
+		            <td id="marketvalue-fb" class="marketvalue">3400.00</td>
+		            <td id="totalgain-fb">0.00</td>
+		            <td id="percentchange-fb">%</td>
+		            <td>
+		              <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="fb">Chart</a>
+		              <a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
+		            </td>
+		        </tr>
+				<tr>
+		          <td class="text-left symbol">SNAP</td>
+		            <td>20</td>
+		            <td id="lastprice-snap">0.00</td>
+		            <td id="pricepaid-snap">0.00</td>
+		            <td id="marketvalue-snap" class="marketvalue">2000.00</td>
+		            <td id="totalgain-snap">0.00</td>
+		            <td id="percentchange-snap">%</td>
+		            <td>
+		              <a class="btn btn-indigo btn-custom-small btn-chart" href="#0" symbol="SNAP">Chart</a>
 		              <a class="btn btn-cyan btn-custom-small" href="#0">Sell</a>
 		            </td>
 		        </tr>
@@ -324,7 +350,7 @@
       <div class="row">
         <div class="col-md-8">
           <h5 class="navbar-brand">ShowMoney</h5>
-          <p class="pr-5">Lorem ipsum dolor sit amet, mandamus consequuntur pri at, augue tollit accommodare duo at. In posse semper quo, brute munere mnesarchum ad his. Oportere consulatu qui eu. Ad modus porro mundi per. </p>
+          <p class="pr-5">You can practice trading without any risk! Try our free realtime stock simulator!</p>
         </div>
         <div class="col-md-4">
           <h5 class="mb-3">References</h5>
