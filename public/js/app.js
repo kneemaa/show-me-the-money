@@ -29,7 +29,9 @@ $('#menu-search').on('click', function(){
 
 // search in tab
 $('#search-btn').on('click', function(){
+	$('#result-chart').addClass('show-hide');
 	searchStock('search-input');
+	$('html, body').animate({scrollTop : 200},500);
 });
 
 function searchStock(inputId){
