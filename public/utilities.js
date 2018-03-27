@@ -40,19 +40,18 @@ const calcAmount = function (purchase_price, stockQuantity) {
 function buyStock(symbol) {
 
     var searchKey = symbol.trim().toUpperCase();
-    var queryURL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + searchKey.replace(/ /g, '') + '&interval=1min&apikey=GNC3G50UKYCQIXVN';
-
+    var queryURL = "https://api.iextrading.com/1.0/tops/last?symbols=" + searchKey.replace(/ /g, '');
+    
     $.ajax({
         url: queryURL,
         method: 'GET'
-    }).done(function (data) {
-        if (data['Meta Data'] === undefined) {
-            console.log("!error");
-            $('#search-keyword').html(searchKey + ' - No stock found. Please enter a correct symbol');
-            $('#search-result tbody').html('');
-            $('#search-result table').addClass('show-hide');
+    }).done(function (data) {    
+        console.log(data[0]["price"]);
+        if (data[0]["price"] === undefined) {
+            $("#error").prepend("!error, that is not a valid stock symbol!");
+            return
         } else {
-            var price = data["Time Series (1min)"]["2018-03-23 14:21:00"]["4. close"];
+            var price = data[0]["price"]
             $("#pricePurchased").val(price);
         }
     });
