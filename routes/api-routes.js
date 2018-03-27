@@ -103,6 +103,17 @@ module.exports = function (app) {
         });
     });
 
+    //Update Available Balance for Buy and Sell
+    app.post("/api/balance/:id&:balance", function(req, res) {
+        db.Users.update({
+            account_balance: req.params.balance
+        },{
+            where:{
+                id: req.params.id
+            }
+        })
+    })
+
     //--Search Stock External API call
     app.get("/api/search/:symbol", function (req, res) {
         const symbol = req.params.symbol;
