@@ -3,7 +3,11 @@
 		  <div class="row">
 			  <div class="col-6">
 				  <h3>My Account</h3>
-				  <p id="user_email" data-id={{id}} class="my-font-small">{{user_email}}</p>
+				  {{#if id}}
+				  	<p id="user_email" data-id={{id}} class="my-font-small">{{user_email}}</p>
+				  {{else}}
+				  	<p id="user_email" data-id="undefined" class="my-font-small"></p>
+				  {{/if}}
 			  </div>
 			  <div class="col-3">
 			  	<p id="portfolioVal" class="my-font-small">Portfolio Value</p>
