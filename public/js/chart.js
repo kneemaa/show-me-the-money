@@ -6,21 +6,7 @@ renderBarChart(symbol, 'chart-stock');
 
 
 // render pie chart
-renderPieChart();
-function renderPieChart(){
-	var stocks = []
-	var stockNum = document.getElementById('my-stocks').childElementCount;
 
-	for (var i = 1; i <= stockNum; i++) {
-		var stock = $('#my-stocks tr:nth-of-type('+i+') td:nth-of-type(1)').html();
-		var value = $('#my-stocks tr:nth-of-type('+i+') td:nth-of-type(5)').html();
-		stocks.push({
-			value: parseFloat(value),
-			name: stock
-		});
-	}
-	pieChart('portfolio', stocks);
-}
 
 // click to switch stock
 $('#panel-portfolio .btn-chart').on('click', function(){
@@ -228,3 +214,19 @@ function barChart(canvas, symbol, price){
 
 	myChart.setOption(option, true);
 }
+
+function renderPieChart(){
+	var stocks = []
+	var stockNum = document.getElementById('my-stocks').childElementCount;
+
+	for (var i = 1; i <= stockNum; i++) {
+		var stock = $('#my-stocks tr:nth-of-type('+i+') td:nth-of-type(1)').html();
+		var value = $('#my-stocks tr:nth-of-type('+i+') td:nth-of-type(5)').html();
+		stocks.push({
+			value: parseFloat(value),
+			name: stock
+		});
+	}
+	pieChart('portfolio', stocks);
+}
+renderPieChart();

@@ -2,13 +2,14 @@
 	  <div class="container">
 		  <div class="row">
 			  <div class="col-6">
-				  <h3>My Account</h3>
 				  {{#if id}}
+				  	<h3>My Account</h3>
 				  	<p id="user_email" data-id={{id}} class="my-font-small">{{user_email}}</p>
 				  {{else}}
-				  	<p id="user_email" data-id="undefined" class="my-font-small"></p>
+				  	{{!-- <p id="user_email" data-id="undefined" class="my-font-small"></p> --}}
 				  {{/if}}
 			  </div>
+			  {{#if id}}
 			  <div class="col-3">
 			  	<p id="portfolioVal" class="my-font-small">Portfolio Value</p>
 				<p id="user_value">{{user_value}}</p>
@@ -17,6 +18,7 @@
 			  	<p id="availableBal" class="my-font-small">Available Balance</p>
 				<p id="user_available">{{user_available}}</p>
 			  </div>
+			  {{/if}}
 		  </div>
 		  <div class="row tabs-wrapper mt-4">
 			  {{> navbar}}
@@ -29,12 +31,12 @@
 
 	  <!-- portfolio -->
 	  <div class="tab-pane fade in show active" id="panel-portfolio" role="tabpanel">
-		{{#if user_email}}
+		
+		  {{#if user_email}}
 		  <h3 class="mb-5">Portfolio</h3>
-		  <div class="row mb-5">
-			  <div id="chart-stock" class="col-8"></div>
-			  <div id="portfolio" class="col-4"></div>
-		  </div>
+		  {{/if}}
+		  {{> charts}}
+		  {{#if user_email}}
 		  <h3 class="mb-5">My Stocks</h3>
 		  <table class="myStocks table table-hover text-center">
 		  	<thead>
