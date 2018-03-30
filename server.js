@@ -77,6 +77,7 @@ db.sequelize.sync({ force: false }).then( () => {
 
         socket.on("loggedin", (user) => {
             const { id, stocks} = user;
+            iex.emit("subscribe", "aig,fb,nke")
             iex.on('message', message => {
                 let data= JSON.parse(message)
                 let symbol = data.symbol;
@@ -84,9 +85,9 @@ db.sequelize.sync({ force: false }).then( () => {
                 socket.emit("portfolio", {symbol: symbol, price: lastPrice});
             })
 
-            iex.on("connect", () => {
-              iex.emit("subscribe", "aig,fb,nke")
-            })
+            // iex.on("connect", () => {
+              
+            // })
         })
 
 

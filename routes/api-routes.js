@@ -67,9 +67,10 @@ module.exports = function (app) {
                 user_email: result[0].dataValues.email,
                 user_value: 0,
                 user_available: formattedBalance,
-                stock_detail: stock_detail
+                stock_detail: stock_detail,
+                stock_array: stockArray
             };
-
+            console.log(stock_detail);
             res.json(formattedResult);
         });
     });
