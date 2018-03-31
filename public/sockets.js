@@ -31,7 +31,7 @@ $(document).ready(function(){
 
         }
     })
-
+    socket.on("connect", function(){
     if ($("#user_email").attr("data-id")) {
         userID = $("#user_email").attr("data-id")
         console.log(userID);
@@ -42,21 +42,23 @@ $(document).ready(function(){
         }).done(function(result){
             
             const stockPortfolio = result.stock_array.join(",");
-            
+            console.log(stockPortfolio);
             userInfo = {
                 userID: userID,
                 stocks: stockPortfolio
             }
+            userSignedIn = true;
+            socket.emit("loggedin", userInfo); // sends the user id
         })
 
-        socket.on("connect", function(){
-            if (userSignedIn){
-                socket.emit("loggedin", userInfo); // sends the user id
-            }
+        
+            // if(userSignedIn) {
+                
+            // }
             
-        })
+       
     } // end of if  
-
+})
     // receives portfolio emit from server
     socket.on("portfolio", function(data){
         console.log(data.symbol);
