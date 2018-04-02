@@ -8,10 +8,7 @@ $(document).ready(function(){
     // var userID = faker.random.uuid
     let userID;
     let userInfo = {}
-    // = {
-    //     // id: userID,
-    //     // stocks: userStocks
-    // }
+    
     
     // receives "broadcast" emit from server containing the top 10 data
     socket.on("broadcast", function(data){
@@ -50,14 +47,8 @@ $(document).ready(function(){
             userSignedIn = true;
             socket.emit("loggedin", userInfo); // sends the user id
         })
-
-        
-            // if(userSignedIn) {
-                
-            // }
-            
        
-    } // end of if  
+    } 
 })
     // receives portfolio emit from server
     socket.on("portfolio", function(data){

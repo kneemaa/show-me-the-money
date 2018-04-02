@@ -87,9 +87,6 @@ db.sequelize.sync({ force: false }).then( () => {
                 socket.emit("portfolio", {symbol: symbol, price: lastPrice});
             })
 
-            // iex.on("connect", () => {
-              
-            // })
         })
 
 
