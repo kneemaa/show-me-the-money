@@ -1,16 +1,15 @@
 $(document).ready(function(){
-// import utils from "./utilities.js";
-
+    let userSignedIn = false
+    
     // Make connection
     // this 'socket' is a separate frontend socket variable
     // and not connected to the one in server on the backend
     var socket = io(window.location.origin || 'http://localhost:3000');
-    var userID = faker.random.uuid
-    var user = {
-        id: userID,
-        // stocks: userStocks
-    }
-
+    // var userID = faker.random.uuid
+    let userID;
+    let userInfo = {}
+    
+    
     // receives "broadcast" emit from server containing the top 10 data
     socket.on("broadcast", function(data){
         if(data.symbol === "IBM"){
@@ -29,21 +28,35 @@ $(document).ready(function(){
 
         }
     })
-
     socket.on("connect", function(){
-        socket.emit("loggedin", user); // sends the user id
+    if ($("#user_email").attr("data-id")) {
+        userID = $("#user_email").attr("data-id")
+        console.log(userID);
 
-        socket.on("newData", function(data){
-            console.log(data);
+        $.ajax({
+            url: "http://localhost:3000/api/portfolio/" + userID,
+            method: 'GET'
+        }).done(function(result){
+            
+            const stockPortfolio = result.stock_array.join(",");
+            console.log(stockPortfolio);
+            userInfo = {
+                userID: userID,
+                stocks: stockPortfolio
+            }
+            userSignedIn = true;
+            socket.emit("loggedin", userInfo); // sends the user id
         })
-    })
-
+       
+    } 
+})
     // receives portfolio emit from server
     socket.on("portfolio", function(data){
+        console.log(data.symbol);
         lastPrice = "#last-price-" + data.symbol;
         $(lastPrice).html(data.price);
 
     })
-
+    
 })
 
